@@ -15,7 +15,7 @@ for tc in range(10):
     res = 0
     visited = []
     input_num = input().split()
-    for i in range(0, len(input_num ), 2):
+    for i in range(0, len(input_num), 2):
         if input_num[i] not in list(matrix.keys()):
             matrix[input_num[i]] = [input_num[i+1]]
         else:
