@@ -446,3 +446,50 @@ def solution(d, budget):
     return answer
 ```
 
+
+
+### 키패드 누르기
+
+> 누르게 될 키패드가 숫자가 아닌 문자('*', '#')까지 나올 경우엔
+>
+> 딕셔너리로 key(키패드) - value(좌표) 푸는 것이 좋을 것 같다. 
+
+```python
+def check(L, R, num, hand, phone):
+    if num == 0: num = 11
+    if L == 0: L = 11
+    if R == 0: R = 11
+    left = abs(phone[L-1][0]-phone[num-1][0]) + abs(phone[L-1][1]-phone[num-1][1])
+    right = abs(phone[R-1][0]-phone[num-1][0]) + abs(phone[R-1][1]-phone[num-1][1])
+    if left > right:
+        return "right"
+    elif right > left:
+        return "left"
+    else:
+        return hand
+
+def solution(numbers, hand):
+    phone = [ (i, j) for i in range(4) for j in range(3) ]
+    answer = ''
+    nowL = 10 # '*'
+    nowR = 12 # '#'
+    for num in numbers:
+        # 왼손
+        if num % 3 == 1:
+            answer += 'L'
+            nowL = num
+        # 오른손
+        elif num != 0 and num % 3 == 0:
+            answer += 'R'
+            nowR = num
+        # 중앙(2, 5, 8, 0)
+        else: 
+            if check(nowL, nowR, num, hand, phone) == "left":
+                nowL = num
+                answer += 'L'
+            else:
+                nowR = num
+                answer += 'R'
+    return answer
+```
+
