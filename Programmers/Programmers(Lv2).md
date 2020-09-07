@@ -279,3 +279,27 @@ def solution(numbers):
     #따라서, same_length 리스트를 만들필요 없이 strnum.sort(key=lambda x:x*3, reverse=True)를 해주면 된다.
 ```
 
+
+
+### 다리를 지나는 트럭
+
+```python
+def solution(bridge_length, weight, truck_weights):
+    answer = 0
+
+    from collections import deque
+    trucks = deque(truck_weights)
+    onbridge = deque()
+    while trucks:
+        if len(onbridge) == bridge_length:
+            onbridge.popleft()
+        if trucks[0] + sum(onbridge) <= weight:
+            onbridge.append(trucks.popleft())
+            answer += 1
+        else:
+            while len(onbridge) < bridge_length:
+                onbridge.append(0)
+                answer += 1
+    return answer+bridge_length
+```
+
