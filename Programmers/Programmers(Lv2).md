@@ -303,3 +303,40 @@ def solution(bridge_length, weight, truck_weights):
     return answer+bridge_length
 ```
 
+
+
+### 문자열 압축
+
+```python
+def check(num, word, answer):
+    res = ''
+    now = word[:num]
+    cnt = 1
+    for i in range(num, len(word), num):
+        if now == word[i:i + num]:
+            cnt += 1
+        else:
+            if cnt == 1:
+                res += now
+                now = word[i:i+num]
+            else:
+                res += str(cnt) + now
+                now = word[i:i + num]
+                cnt = 1
+        if len(res) >= answer:
+            return answer
+    if cnt == 1:
+        res += now
+    else:
+        res += str(cnt) + now
+    return len(res)
+
+def solution(s):
+    answer = len(s)
+    for i in range(1, len(s)//2 + 1):
+        result = check(i, s, answer)
+        if answer > result:
+            answer = result
+    return answer
+```
+
