@@ -340,3 +340,64 @@ def solution(s):
     return answer
 ```
 
+
+
+### 삼각 달팽이
+
+```python
+def solution(n):
+    answer = []
+    candidates = [[0]*n for _ in range(n)]
+
+    direction = 'd'
+
+    row = 0
+    col = 0
+    num = 1
+    cnt = n
+    while(cnt):
+        if direction == 'd':
+            for i in range(cnt):
+                if not candidates[row][col]:
+                    candidates[row][col] = num
+                    row += 1
+                    num += 1
+                else:
+                    break
+            row -= 1
+            col += 1
+            direction = 'r'
+            cnt -= 1
+        elif direction == 'r':
+            for i in range(cnt):
+                if not candidates[row][col]:
+                    candidates[row][col] = num
+                    col += 1
+                    num += 1
+                else:
+                    break
+            row -= 1
+            col -= 2
+            direction = 'u'
+            cnt -= 1
+        else:
+            for i in range(cnt):
+                if not candidates[row][col]:
+                    candidates[row][col] = num
+                    row -= 1
+                    col -= 1
+                    num += 1
+                else:
+                    break
+            row += 2
+            col += 1
+            direction = 'd'
+            cnt -= 1
+            
+    for li in candidates:
+        for num in li:
+            if num:
+                answer.append(num)
+    return answer
+```
+

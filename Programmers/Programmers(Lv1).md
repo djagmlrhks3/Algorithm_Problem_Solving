@@ -493,3 +493,47 @@ def solution(numbers, hand):
     return answer
 ```
 
+
+
+### 두 개 뽑아서 더하기
+
+```python
+def solution(numbers):
+    answer = []
+    for i in range(len(numbers)-1):
+        for j in range(i+1, len(numbers)):
+            if numbers[i] + numbers[j] not in answer:
+                answer.append(numbers[i]+numbers[j])
+    return sorted(answer)
+```
+
+
+
+### 3진법 뒤집기
+
+```python
+def solution(n):
+    answer = 0
+    three = ""
+    while(n > 2):
+        three += str(n % 3)
+        n //= 3
+    three += str(n)
+    for idx in range(len(three)):
+        answer += 3**(idx) * int(three[::-1][idx])
+    
+    return answer
+```
+
+
+
+### 내적
+
+```python
+def solution(a, b):
+    answer = 0
+    for idx in range(len(a)):
+        answer += a[idx] * b[idx]
+    return answer
+```
+
