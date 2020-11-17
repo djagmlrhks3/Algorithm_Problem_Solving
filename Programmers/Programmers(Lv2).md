@@ -401,3 +401,22 @@ def solution(n):
     return answer
 ```
 
+
+
+### 구명보트
+
+```python
+def solution(people, limit):
+    answer = 0
+    people.sort(reverse=True)
+    front, back = 0, len(people)-1
+    while front <= back:
+        if people[front] + people[back] <= limit:
+            front += 1
+            back -= 1
+        else:
+            front += 1
+        answer += 1
+    return answer
+```
+
