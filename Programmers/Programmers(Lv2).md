@@ -437,3 +437,30 @@ def solution(citations):
     return answer
 ```
 
+
+
+### 타겟 넘버
+
+> DFS/BFS라는 힌트를 받았지만 어떻게 풀어야할지 막막했던 문제
+>
+> DFS 방법 - 재귀를 이용하여 풀었다.
+>
+> 또한 함수 안의 함수 형태에서 변수의 사용범위에 대해서 고민이 많았는데
+>
+> 굳이 인자로 넘기지 않고 **nonlocal**로 처리할 수 있음을 배웠다.
+
+```python
+def solution(numbers, target):
+    answer = 0
+    def dfs(step, total):
+        if step == len(numbers):
+            if total == target:
+                nonlocal  answer
+                answer += 1
+        else:
+            dfs(step+1, total+numbers[step])
+            dfs(step+1, total-numbers[step])
+    dfs(0, 0)
+    print(answer)
+```
+
