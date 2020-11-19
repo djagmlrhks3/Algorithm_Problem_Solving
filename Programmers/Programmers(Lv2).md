@@ -484,3 +484,23 @@ def solution(s):
     return answer + empty
 ```
 
+
+
+### 올바른 괄호
+
+```python
+def solution(s):
+    left = 0
+    flag = True
+    for i in s:
+        if i == '(':
+            left += 1
+        else:
+            if left == 0:
+                flag = False
+                break
+            else:
+                left -= 1
+    return True if flag and left == 0 else False
+```
+
