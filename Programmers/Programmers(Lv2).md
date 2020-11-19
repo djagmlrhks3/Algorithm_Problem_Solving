@@ -464,3 +464,23 @@ def solution(numbers, target):
     print(answer)
 ```
 
+
+
+### JadenCase 문자열 만들기
+
+```python
+def solution(s):
+    answer = ''
+    words = list(map(str, s.split()))
+    empty = ''
+    for word in s:
+        if not empty and word.isalpha():
+            empty += word.upper()
+        elif word == ' ':
+            answer += empty + ' '
+            empty = ''
+        else:
+            empty += word.lower()
+    return answer + empty
+```
+
