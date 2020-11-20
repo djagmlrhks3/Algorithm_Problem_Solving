@@ -471,7 +471,6 @@ def solution(numbers, target):
 ```python
 def solution(s):
     answer = ''
-    words = list(map(str, s.split()))
     empty = ''
     for word in s:
         if not empty and word.isalpha():
