@@ -501,3 +501,47 @@ def solution(s):
     return True if not left else False 
 ```
 
+
+
+### 더 맵게
+
+> 풀이 1
+
+```python
+import heapq
+def solution(scoville, K):
+    answer = 0
+    heapq.heapify(scoville)
+    while len(scoville) > 1:
+        min_1 = heapq.heappop(scoville)
+        if min_1 < K:
+            min_2 = heapq.heappop(scoville)
+            heapq.heappush(scoville, min_1 + min_2*2)
+            answer += 1
+        else:
+            heapq.heappush(scoville, min_1)
+            break
+    return answer if scoville[0] >= K else -1
+```
+
+> 풀이 2
+
+```python
+import heapq
+def solution(scoville, K):
+    answer = 0
+    heapq.heapify(scoville)
+    while True:
+        min_1 = heapq.heappop(scoville)
+        if min_1 < K:
+            if not len(scoville):
+                return -1
+            min_2 = heapq.heappop(scoville)
+            heapq.heappush(scoville, min_1 + min_2*2)
+            answer += 1
+        else:
+            heapq.heappush(scoville, min_1)
+            break
+    return answer
+```
+
