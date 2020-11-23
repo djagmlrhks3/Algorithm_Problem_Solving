@@ -545,3 +545,24 @@ def solution(scoville, K):
     return answer
 ```
 
+
+
+### 위장
+
+```python
+def solution(clothes):
+    answer = 1
+    total = dict()
+    for clothe in clothes:
+        if clothe[1] not in total:
+            total[clothe[1]] = 1
+        else:
+            total[clothe[1]] += 1
+    if len(total) == 1:
+        return len(clothes)
+    else:
+        for i in total.values():
+            answer *= i+1
+    return answer - 1
+```
+
