@@ -566,3 +566,20 @@ def solution(clothes):
     return answer - 1
 ```
 
+
+
+### 카펫
+
+```python
+def solution(brown, yellow):
+    total = brown + yellow
+    center = int(brown+yellow//2)
+    print(center)
+    for i in range(center+1, 0, -1):
+        if not total % i:
+            col = max(i, total//i)
+            row = min(i, total//i)
+            if (col * 2 + row * 2) - 4 == brown:
+                return(col, row)
+```
+
