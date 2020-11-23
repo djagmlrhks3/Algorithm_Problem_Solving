@@ -572,14 +572,12 @@ def solution(clothes):
 
 ```python
 def solution(brown, yellow):
-    total = brown + yellow
-    center = int(brown+yellow//2)
-    print(center)
-    for i in range(center+1, 0, -1):
-        if not total % i:
+    total = brown + yellow # 카펫의 총 면적
+    for i in range(3, brown): # 최소 3부터 시작
+        if not total % i: # 면적으로 만들 수 있는 행, 열이 존재
             col = max(i, total//i)
             row = min(i, total//i)
-            if (col * 2 + row * 2) - 4 == brown:
-                return(col, row)
+            if (col * 2 + row * 2) - 4 == brown: # brown 개수 일치여부
+                return [col, row]
 ```
 
