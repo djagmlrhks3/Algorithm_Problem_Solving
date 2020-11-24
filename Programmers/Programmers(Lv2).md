@@ -592,3 +592,34 @@ def solution(n):
         a, b = b, a + b
     return a % 1234567
 ```
+
+
+
+### 소수 찾기
+
+>파이썬의 내장 라이브러리인 itertools를 활용
+
+```python
+from itertools import permutations
+def check(num):
+    if num < 2:
+        return False
+    else:
+        for i in range(2, int(num**(0.5))+1):
+            if not num%i:
+                return False
+    return True
+
+def solution(numbers):
+    answer = 0
+    candidates = []
+    for i in range(1, len(numbers)+1):
+        for n in list(map(''.join, permutations(numbers, i))):
+            if int(n) not in candidates:
+                candidates.append(int(n))            
+                if check(int(n)):
+                    answer += 1
+    return answer
+             
+```
+
