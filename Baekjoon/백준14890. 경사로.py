@@ -12,8 +12,6 @@ sys.stdin = open('백준14890. 경사로.txt','r')
 자기보다 크면
 if length < L or 차이가 2 이상이면 False
 if length > L or 차이가 1이면 대소비교
-
-
 """
 N, L = map(int,input().split())
 mountain = [list(map(int,input().split())) for _ in range(N)]
@@ -62,6 +60,6 @@ def check(mountain):
                         length += 1
 
         count += 1
-
 check(mountain)
 check(list(zip(*mountain)))
+print(count)
