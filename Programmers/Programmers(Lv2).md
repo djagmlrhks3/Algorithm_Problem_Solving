@@ -623,3 +623,28 @@ def solution(numbers):
              
 ```
 
+
+
+### 오픈채팅방
+
+```python
+def solution(record):
+    users = dict()
+    userid = []
+    answer = []
+    for re in record:
+        info = re.split()
+        if info[0] == "Enter":
+            users[info[1]] = info[2]
+            userid.append(info[1])
+            answer.append("님이 들어왔습니다.")
+        elif info[0] == "Change":
+            users[info[1]] = info[2]
+        else:
+            answer.append("님이 나갔습니다.")
+            userid.append(info[1])
+    for i in range(len(userid)):
+        answer[i] = users[userid[i]] + answer[i]
+    return answer
+```
+
