@@ -695,3 +695,51 @@ def solution(number, k):
     return ''.join(stack)
 ```
 
+
+
+### 다음 큰 숫자
+
+```python
+def solution(n):
+    binary = bin(n)[2:]
+    cnt = binary.count('1')
+    if len(binary) == cnt:
+        return int('0b' + '10'+'1'*(cnt-1),2)
+    else:
+        if binary[-1] == '1':
+            for i in range(len(binary)-1, 0, -1):
+                if binary[i] == '0':
+                    return int('0b' + binary[:i] + '10' + binary[i+2:], 2)
+        else:
+            flag = False
+            chk = 0
+            for i in range(len(binary)-1, 0, -1):
+                if binary[i] == '0':
+                    flag = True
+                if binary[i] == '1' and flag and chk == 0:
+                    chk = 1
+                    flag = False
+                if binary[i] == '0' and chk == 1:
+                    idx = i
+                    count_1 = binary[idx+2:].count('1')
+                    count_0 = len(binary[idx+2:]) - count_1
+                    return int('0b' + binary[:idx] + '10' + '0' * count_0 + '1' * count_1, 2)
+
+            else:
+                count_1 = binary.count('1')
+                count_0 = binary.count('0')
+                return int('0b' + '10' + '0'* (count_0) + '1' * (count_1-1), 2)
+```
+
+
+
+> 다른사람의 풀이
+
+```python
+def solution(n):
+    cnt = bin(n).count('1')
+    for i in range(n+1, 1000001):
+        if bin(i).count('1') == cnt:
+            return i
+```
+
