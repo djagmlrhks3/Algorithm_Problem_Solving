@@ -687,7 +687,7 @@ def solution(number, k):
                 stack.append(number[i])
             else:
                 while len(stack) and k and int(stack[-1]) < int(number[i]):
-                    stack.pop(-1)
+                    stack.pop()
                     k -= 1
                 stack.append(number[i])
         else:
@@ -741,5 +741,41 @@ def solution(n):
     for i in range(n+1, 1000001):
         if bin(i).count('1') == cnt:
             return i
+```
+
+
+
+### 괄호 변환
+
+```python
+def divide(p):
+    last = 0
+    flag = True
+    left, right = 0, 0
+    for i in range(len(p)):
+        if p[i] == '(':
+            left += 1
+        else:
+            right += 1
+            if right > left:
+                flag = False
+        if left == right:
+            last = i
+            break
+    else:
+        last = len(p)-1
+    return p[:last+1], p[last+1:], flag
+
+def recursive(p):
+    if p == '':
+        return ''
+    u, v, flag = divide(p)
+    if flag:
+        return u + recursive(v)
+    else:
+        return '(' + recursive(v) + ')' + ''.join([')' if i == '(' else '(' for i in u[1:-1]])
+
+def solution(p):
+    return recursive(p)
 ```
 
