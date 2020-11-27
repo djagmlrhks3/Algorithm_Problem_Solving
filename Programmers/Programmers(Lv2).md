@@ -779,3 +779,22 @@ def solution(p):
     return recursive(p)
 ```
 
+
+
+### 숫자의 표현
+
+```python
+def solution(n):
+    answer = 1
+    numbers = [i for i in range(1, n)]
+    print(numbers)
+    for i in range(0, len(numbers)-1):
+        for j in range(i+1, len(numbers)):
+            res = sum(numbers[i:j+1])
+            if res == n:
+                answer += 1
+            if res > n:
+                break
+    return answer
+```
+
