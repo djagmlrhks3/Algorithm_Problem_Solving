@@ -797,3 +797,32 @@ def solution(n):
     return answer
 ```
 
+
+
+### N개의 최소공배수
+
+```python
+def divide(num, n):
+    cnt = 0
+    while True:
+        if n % num:
+            return cnt, n
+        else:
+            n //= num
+            cnt += 1
+            
+def solution(arr):
+    answer = 1
+    num = 2
+    while sum(arr) != len(arr):
+        count = 0
+        for i in range(len(arr)):
+            if not arr[i] % num:
+                cnt, res = divide(num, arr[i])
+                arr[i] = res
+                count = max(count, cnt)
+        answer *= (num ** count)
+        num += 1
+    return answer
+```
+
