@@ -826,3 +826,43 @@ def solution(arr):
     return answer
 ```
 
+
+
+### 조이스틱
+
+```python
+def check(idx, step):
+    left = right = idx
+    cnt = 0
+    while True:
+        right += 1
+        left -= 1
+        cnt += 1
+        if right == len(step):
+            right = len(step)-1
+        if left  == -1:
+            left = len(step)-1
+        if step[right]:
+            return right, cnt
+        if step[left]:
+            return left, cnt
+
+
+def solution(name):
+    answer = 0
+    step = [0] * len(name)
+    for i in range(len(name)):
+        step[i] = min(abs(ord("A")-ord(name[i])), abs(ord("Z")+1 - ord(name[i])))
+
+    idx = 0
+    while sum(step):
+        if step[idx]:
+            answer += step[idx]
+            step[idx] = 0
+        else:
+            idx, cnt = check(idx, step)
+            answer += cnt + step[idx]
+            step[idx] = 0
+    return answer
+```
+
