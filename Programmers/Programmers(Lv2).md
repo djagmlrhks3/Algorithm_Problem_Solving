@@ -866,3 +866,46 @@ def solution(name):
     return answer
 ```
 
+
+
+### [1차] 캐시
+
+```python
+from collections import deque
+
+def goToBack(city, queue):
+    queue.remove(city.lower())
+    queue.append(city.lower())
+    return queue
+
+def solution(cacheSize, cities):
+    answer = 0
+    if cacheSize == 0:
+        return len(cities) * 5
+    queue = deque([])
+    idx = 0
+    while True:
+        if len(queue) == cacheSize:
+            break
+        if idx == len(cities):
+            break
+        if cities[idx].lower() not in queue:
+            queue.append(cities[idx].lower())
+            idx += 1
+        else:
+            goToBack(cities[idx], queue)
+            answer += 1
+            idx += 1
+    answer += len(queue) * 5
+
+    for i in range(idx, len(cities)):
+        if cities[i].lower() in queue:
+            answer += 1
+            goToBack(cities[i], queue)
+        else:
+            answer += 5
+            queue.popleft()
+            queue.append(cities[i].lower())
+    return answer
+```
+
