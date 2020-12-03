@@ -909,3 +909,72 @@ def solution(cacheSize, cities):
     return answer
 ```
 
+
+
+### [1차] 뉴스 클러스터링
+
+> 1차 풀이
+
+```python
+def solution(str1, str2):
+    son = mother = 0
+    str1_dict = dict()
+    str2_dict = dict()
+    for i in range(len(str1)-1):
+        string1 = str1[i:i+2].lower()
+        if string1.isalpha():
+            if string1 not in str1_dict.keys():
+                str1_dict[string1] = 1
+            else:
+                str1_dict[string1] += 1
+    for i in range(len(str2)-1):
+        string2 = str2[i:i+2].lower()
+        if string2.isalpha():
+            if string2 not in str2_dict.keys():
+                str2_dict[string2] = 1
+            else:
+                str2_dict[string2] += 1
+
+    used = []
+    for idx, value in str1_dict.items():
+        if idx not in used:
+            if idx in str2_dict.keys():
+                son += min(str1_dict[idx], str2_dict[idx])
+                mother += max(str1_dict[idx], str2_dict[idx])
+            else:
+                mother += str1_dict[idx]
+            used.append(idx)
+
+    for idx, value in str2_dict.items():
+        if idx not in used:
+            mother += str2_dict[idx]
+    return 65536 if mother == 0 else int(son/mother * 65536)
+```
+
+
+
+> 2차 풀이
+
+```python
+def solution(str1, str2):
+    str1_list = []
+    str2_list = []
+
+    for i in range(len(str1)-1):
+        string1 = str1[i:i+2].lower()
+        if string1.isalpha():
+            str1_list.append(string1)
+    for i in range(len(str2)-1):
+        string2 = str2[i:i+2].lower()
+        if string2.isalpha():
+            str2_list.append(string2)
+            
+    intersection = set(str1_list) & set(str2_list)
+    union = set(str1_list) | set(str2_list)
+
+    son = [min(str1_list.count(i), str2_list.count(i)) for i in intersection]
+    mother = [max(str1_list.count(i), str2_list.count(i)) for i in union]
+
+    return int(sum(son)/sum(mother) * 65536) if len(mother) else 65536
+```
+
