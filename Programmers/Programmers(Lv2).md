@@ -978,3 +978,26 @@ def solution(str1, str2):
     return int(sum(son)/sum(mother) * 65536) if len(mother) else 65536
 ```
 
+
+
+### 소수 만들기
+
+```python
+from itertools import combinations
+
+def check(num):
+    for i in range(2, num):
+        if not num % i:
+            return False
+    return True
+
+def solution(nums):
+    answer = 0
+    for li in combinations(nums, 3):
+        num = sum(li)
+        if check(num):
+            answer += 1
+
+    return answer
+```
+
