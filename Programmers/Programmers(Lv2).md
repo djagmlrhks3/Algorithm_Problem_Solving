@@ -1001,3 +1001,37 @@ def solution(nums):
     return answer
 ```
 
+면접은 꾸준히 준비해야한다고 하는데 꾸준히 연습하거나 준비하고 계신거 있으신가요?
+
+
+
+### 땅따먹기
+
+> 풀이 1
+
+```python
+from copy import deepcopy
+
+def solution(land):    
+    candidates = deepcopy(land[0])
+    for i in range(1, len(land)):
+        step = deepcopy(candidates)
+        for j in range(4):
+            idx = 0
+            while True:
+                if j == idx:
+                    idx += 1
+                    continue
+                if idx == 4:
+                    break
+                candidates[idx] = max(candidates[idx], step[j] + land[i][idx])
+                idx += 1
+    return max(candidates)
+```
+
+> 풀이 2 
+
+```python
+
+```
+
