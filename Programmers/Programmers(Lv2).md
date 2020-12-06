@@ -1063,3 +1063,29 @@ def solution(board):
     return answer ** 2
 ```
 
+
+
+### 폰켓몬
+
+> 풀이1) 시간초과
+
+```python
+from itertools import combinations
+
+def solution(nums):
+    answer = 0
+    N = len(nums)
+    for li in combinations(nums, N//2):
+        answer = max(answer, len(set(li)))
+    print(answer)
+```
+
+
+
+> 풀이2)
+
+```python
+def solution(nums):
+    return min(len(nums)//2, len(set(nums)))
+```
+
