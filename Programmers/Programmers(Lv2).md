@@ -1032,6 +1032,34 @@ def solution(land):
 > 풀이 2 
 
 ```python
+def solution(land):
+    for i in range(1, len(land)):
+        land[i][0] = max(land[i-1][1], land[i-1][2], land[i-1][3]) + land[i][0]
+        land[i][1] = max(land[i-1][0], land[i-1][2], land[i-1][3]) + land[i][1]
+        land[i][2] = max(land[i-1][0], land[i-1][1], land[i-1][3]) + land[i][2]
+        land[i][3] = max(land[i-1][0], land[i-1][1], land[i-1][2]) + land[i][3]
 
+    return max(land[-1])
+```
+
+
+
+### 가장 큰 정사각형 찾기
+
+```python
+def solution(board):
+    for row in board:
+        if sum(row):
+            answer = 1
+            break
+    else:
+        return 0
+
+    for i in range(1, len(board)):
+        for j in range(1, len(board[0])):
+            if board[i-1][j-1] and board[i-1][j] and board[i][j-1] and board[i][j]:
+                board[i][j] = min(board[i-1][j-1], board[i-1][j], board[i][j-1]) + 1
+                answer = max(answer, board[i][j])
+    return answer ** 2
 ```
 
