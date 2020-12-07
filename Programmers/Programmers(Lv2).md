@@ -1089,3 +1089,46 @@ def solution(nums):
     return min(len(nums)//2, len(set(nums)))
 ```
 
+
+
+### [1차] 프렌즈4블록
+
+```python
+def eraser(square, matrix, answer):
+    for i, j in square:
+        matrix[i-1][j-1] = ''
+        matrix[i][j-1] = ''
+        matrix[i-1][j] = ''
+        matrix[i][j] = ''
+    return matrix
+
+def down(matrix):
+    for i in range(len(matrix)-1, -1, -1):
+        for j in range(len(matrix[0])-1, -1, -1):
+            if not matrix[i][j]:
+                for z in range(i-1, -1, -1):
+                    if matrix[z][j]:
+                        matrix[i][j] = matrix[z][j]
+                        matrix[z][j] = ''
+                        break
+    return matrix
+
+def solution(m, n, board):
+    answer = 0
+    matrix = [list(''.join(string)) for string in board]
+    square = []
+    while True:
+        for i in range(1, m):
+            for j in range(1, n):
+                if matrix[i-1][j-1] == matrix[i-1][j] == matrix[i][j-1] == matrix[i][j] and matrix[i][j] != '':
+                    square.append((i, j))
+        if len(square):
+            matrix = eraser(square, matrix, answer)
+            square.clear()
+            matrix = down(matrix)
+        else:
+            break
+    for li in matrix: answer += li.count('')
+    return answer
+```
+
