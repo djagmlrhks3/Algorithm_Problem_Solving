@@ -1094,7 +1094,7 @@ def solution(nums):
 ### [1차] 프렌즈4블록
 
 ```python
-def eraser(square, matrix, answer):
+def eraser(square, matrix):
     for i, j in square:
         matrix[i-1][j-1] = ''
         matrix[i][j-1] = ''
@@ -1123,7 +1123,7 @@ def solution(m, n, board):
                 if matrix[i-1][j-1] == matrix[i-1][j] == matrix[i][j-1] == matrix[i][j] and matrix[i][j] != '':
                     square.append((i, j))
         if len(square):
-            matrix = eraser(square, matrix, answer)
+            matrix = eraser(square, matrix)
             square.clear()
             matrix = down(matrix)
         else:
