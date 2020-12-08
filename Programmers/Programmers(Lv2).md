@@ -1109,7 +1109,7 @@ def down(matrix):
                 for z in range(i-1, -1, -1):
                     if matrix[z][j]:
                         matrix[i][j] = matrix[z][j]
-                        matrix[z][j] = ''
+                        matrix[i][j], matrix[z][j] = matrix[z][j], matrix[i][j]
                         break
     return matrix
 
@@ -1130,5 +1130,30 @@ def solution(m, n, board):
             break
     for li in matrix: answer += li.count('')
     return answer
+```
+
+
+
+### 점프와 순간 이동
+
+> 풀이1
+
+```python
+def solution(n):
+    ans = 1
+    while n != 1:
+        if n % 2:
+            ans += 1
+            n = (n-1) // 2
+        else:
+            n //= 2
+    return ans
+```
+
+> 풀이2
+
+```python
+def solution(n):
+    return bin(n).count('1')
 ```
 
