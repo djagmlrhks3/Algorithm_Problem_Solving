@@ -1192,3 +1192,26 @@ def solution(relation):
     return answer
 ```
 
+
+
+### 짝지어 제거하기
+
+```python
+from collections import deque
+
+def solution(s):
+    stack = []
+    words = deque(''.join(s))
+    while len(words):
+        if len(stack) and stack[-1] == words[0]:
+            stack.pop(-1)
+            words.popleft()
+            continue
+        stack.append(words.popleft())
+        if len(words) and stack[-1] == words[0]:
+            stack.pop(-1)
+            words.popleft()
+
+    return 0 if len(stack) else 1
+```
+
