@@ -1223,7 +1223,6 @@ def solution(s):
 
 ```python
 def solution(s):
-    answer = 0
     stack = []
     for word in s:
         if not stack:
