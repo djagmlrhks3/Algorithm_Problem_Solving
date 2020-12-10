@@ -1196,6 +1196,8 @@ def solution(relation):
 
 ### 짝지어 제거하기
 
+> 풀이1
+
 ```python
 from collections import deque
 
@@ -1211,6 +1213,26 @@ def solution(s):
         if len(words) and stack[-1] == words[0]:
             stack.pop(-1)
             words.popleft()
+
+    return 0 if len(stack) else 1
+```
+
+
+
+> 풀이2 - 풀이1 개선
+
+```python
+def solution(s):
+    answer = 0
+    stack = []
+    for word in s:
+        if not stack:
+            stack.append(word)
+            continue
+        if stack[-1] == word:
+            stack.pop(-1)
+        else:
+            stack.append(word)
 
     return 0 if len(stack) else 1
 ```
