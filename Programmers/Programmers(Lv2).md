@@ -1236,3 +1236,36 @@ def solution(s):
     return 0 if len(stack) else 1
 ```
 
+
+
+### 예상 대진표
+
+> 풀이1
+
+```python
+def solution(n,a,b):
+    a, b = min(a,b), max(a,b)
+    answer = 0
+    cnt = 0
+    for i in range(1, 21):
+        if 2**i == n:
+            cnt = i
+    left = 1
+    right = n
+    center = (left + right) // 2
+    while True:
+        if center >= a and center < b:
+            break
+        elif a >= center:
+            left = center
+            center = (right + center) // 2
+            cnt -= 1
+        elif center >= b:
+            right = center
+            center = (left + center) // 2
+            cnt -= 1
+    return cnt
+```
+
+
+
