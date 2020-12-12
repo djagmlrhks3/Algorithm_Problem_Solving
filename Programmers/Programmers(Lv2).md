@@ -1284,3 +1284,33 @@ def solution(n,a,b):
 
 
 
+### [3차] n진수 게임
+
+```python
+def solution(n, t, m, p):
+    answer = ''
+    length = m * t
+    candidate = '0'
+    num = 0
+    alpha = 'ABCDEF'
+    
+    while len(candidate) < length:
+        res = ''
+        number = num
+        while True:
+            if number == 0:
+                break
+            if number % n:
+                if number % n >= 10:
+                    res += alpha[(number%n) % 10]
+                else:
+                    res += str(number % n)
+            else:
+                res += '0'
+            number //= n
+        num += 1
+        candidate += res[::-1]
+    for i in range(p-1, length, m): answer += candidate[i]
+    return answer
+```
+
