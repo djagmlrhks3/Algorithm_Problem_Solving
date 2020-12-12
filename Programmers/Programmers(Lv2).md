@@ -1291,7 +1291,7 @@ def solution(n, t, m, p):
     answer = ''
     length = m * t
     candidate = '0'
-    num = 0
+    num = 1
     alpha = 'ABCDEF'
     
     while len(candidate) < length:
