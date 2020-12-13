@@ -1314,3 +1314,38 @@ def solution(n, t, m, p):
     return answer
 ```
 
+
+
+### [3차] 압축
+
+```python
+def check(idx, msg, words):
+    new = True
+    for i in range(idx+1, len(msg)):
+        if msg[idx:i+1] not in words:
+            words.append(msg[idx:i+1])
+            break
+    else:
+        new = False
+    return new, words, i
+
+def solution(msg):
+    answer = []
+    words = []
+    idx = 0
+    while idx < len(msg):
+        if msg[idx:idx+2] in words: # 만약 다음 문자가 answer에 있다면 check으로 확인
+            new, words, end = check(idx, msg, words)
+            if new:
+                answer.append(words.index(msg[idx:end]) + 27)
+                idx += (end - idx)
+            else:
+                answer.append(words.index(msg[idx:len(msg)]) + 27)
+                idx = len(msg)
+        else: # 만약 다음 문자가 answer에 없다면
+            answer.append(ord(msg[idx]) - 64)
+            words.append(msg[idx:idx+2])
+            idx += 1
+    return answer
+```
+
