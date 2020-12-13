@@ -1378,3 +1378,15 @@ def solution(msg):
     return answer
 ```
 
+
+
+> TIP)
+
+```python
+myDic = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", range(1,27)))
+
+또는
+
+tmp = {chr(e + 64): e for e in range(1, 27)}
+```
+
