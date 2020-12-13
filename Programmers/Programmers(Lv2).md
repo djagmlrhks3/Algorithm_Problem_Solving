@@ -1318,6 +1318,8 @@ def solution(n, t, m, p):
 
 ### [3차] 압축
 
+>  풀이1
+
 ```python
 def check(idx, msg, words):
     new = True
@@ -1342,6 +1344,33 @@ def solution(msg):
             else:
                 answer.append(words.index(msg[idx:len(msg)]) + 27)
                 idx = len(msg)
+        else: # 만약 다음 문자가 answer에 없다면
+            answer.append(ord(msg[idx]) - 64)
+            words.append(msg[idx:idx+2])
+            idx += 1
+    return answer
+```
+
+
+
+> 풀이2
+
+```python
+def solution(msg):
+    answer = []
+    words = []
+    idx = 0
+    while idx < len(msg):
+        if msg[idx:idx+2] in words: # 만약 다음 문자가 answer에 있다면 check으로 확인
+            for i in range(idx+2, len(msg)):
+                if msg[idx:i+1] not in words:
+                    words.append(msg[idx:i + 1])
+                    answer.append(words.index(msg[idx:i]) + 27)
+                    idx += (i-idx)
+                    break
+            else:
+                answer.append(words.index(msg[idx:len(msg)]) + 27)
+                break
         else: # 만약 다음 문자가 answer에 없다면
             answer.append(ord(msg[idx]) - 64)
             words.append(msg[idx:idx+2])
