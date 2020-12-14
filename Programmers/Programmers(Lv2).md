@@ -1390,3 +1390,44 @@ myDic = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", range(1,27)))
 tmp = {chr(e + 64): e for e in range(1, 27)}
 ```
 
+
+
+### [3차] 파일명 정렬
+
+```python
+def solution(files):
+    answer = []
+    candidate = []
+    for i in range(len(files)):
+        head = ''
+        number = ''
+        for word in files[i]:
+            if not word.isnumeric() and not number:
+                head += word
+            if word.isnumeric():
+                number += word
+            if not word.isnumeric() and number:
+                break
+        candidate.append([head, number, i])
+
+    arrange = sorted(candidate, key = lambda x : (x[0].lower(), int(x[1])))
+    for arr in arrange: answer.append(files[arr[2]])
+    return answer
+```
+
+
+
+다른 사람의 풀이
+
+```python
+import re
+
+def solution(files):
+    a = sorted(files, key=lambda file : int(re.findall('\d+', file)[0]))
+    b = sorted(a, key=lambda file : re.split('\d+', file.lower())[0])
+    return b
+```
+
+number 부분이 5자리 이상일 경우에 대한 예외처리 필요...
+
+→  '\d+' 대신 '\d{1,5}'로 정확한 범위를 주면 더 좋은 코드가 될 것 같다.
