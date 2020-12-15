@@ -1477,3 +1477,53 @@ def solution(m, musicinfos):
         return "(None)"
 ```
 
+
+
+### 수식 최대화
+
+```python
+from itertools import permutations
+from collections import deque
+
+def solution(expression):
+    num = ''
+    origin_numbers = []
+    origin_orders = []
+    candidates = []
+    for ex in expression:
+        if ex.isnumeric():
+            num += ex
+        else:
+            origin_orders.append(ex)
+            origin_numbers.append(int(num))
+            num = ''
+    origin_numbers.append(int(num))
+    for turn in permutations(['+', '-', '*']):
+        numbers = deque(origin_numbers[:])
+        orders =  deque(origin_orders[:])
+        for order in turn:
+            after_numbers = deque([])
+            after_orders = deque([])
+            while orders.count(order):
+                now_o = orders.popleft()
+                now_n = numbers.popleft()
+                if now_o == order:
+                    if order == '+':
+                        numbers.appendleft(now_n + numbers.popleft())
+                    elif order == '-':
+                        numbers.appendleft(now_n - numbers.popleft())
+                    else:
+                        numbers.appendleft(now_n * numbers.popleft())
+                    continue
+                else:
+                    after_orders.append(now_o)
+                    after_numbers.append(now_n)
+            orders = after_orders + orders
+            numbers = after_numbers + numbers
+        candidates.append(abs(numbers[0]))
+
+    return max(candidates)
+```
+
+
+
