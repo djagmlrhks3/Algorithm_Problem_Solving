@@ -1431,3 +1431,49 @@ def solution(files):
 number 부분이 5자리 이상일 경우에 대한 예외처리 필요...
 
 →  '\d+' 대신 '\d{1,5}'로 정확한 범위를 주면 더 좋은 코드가 될 것 같다.
+
+
+
+### [3차] 방금그곡
+
+```python
+def change(res):
+    res = res.replace("C#", "c")
+    res = res.replace("D#", "d")
+    res = res.replace("F#", "f")
+    res = res.replace("G#", "g")
+    res = res.replace("A#", "a")
+    return res
+
+def hear(code, length):
+    idx = 0
+    res = ''
+    while len(res) != length:
+        res += code[idx]
+        idx += 1
+        if idx == len(code):
+            idx = 0
+    return res
+
+def solution(m, musicinfos):
+    musics = []
+    m = change(m)
+
+    for i in range(len(musicinfos)):
+        musicinfos[i] = (musicinfos[i].split(','))
+
+    for music in musicinfos:
+        music[3] = change(music[3])
+
+    for music in musicinfos:
+        length = (int(music[1][:2])-int(music[0][:2]))*60 + int(music[1][3:])-int(music[0][3:])
+        res = hear(music[3], length)
+        musics.append([length, musicinfos.index(music), res, music[2]])
+
+    for li in sorted(musics, key = lambda x: (-x[0], x[1])):
+        if m in li[2]:
+            return li[3]
+    else:
+        return "(None)"
+```
+
