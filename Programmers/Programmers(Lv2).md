@@ -1481,6 +1481,8 @@ def solution(m, musicinfos):
 
 ### 수식 최대화
 
+> 풀이1
+
 ```python
 from itertools import permutations
 from collections import deque
@@ -1526,4 +1528,40 @@ def solution(expression):
 ```
 
 
+
+> 풀이2
+
+우선순위가 높은 애들 기준으로 먼저 분리시킨 다음에(split)
+
+낮은순서부터 join을 이용하여 계산한다.
+
+```python
+def calc(priority, n, expression):
+    if n == 2:
+        return str(eval(expression))
+    if priority[n] == '*':
+        res = eval('*'.join([calc(priority, n+1, e) for e in expression.split('*')]))
+    if priority[n] == '+':
+        res = eval('+'.join([calc(priority, n+1, e) for e in expression.split('+')]))
+    if priority[n] == '-':
+        res = eval('-'.join([calc(priority, n+1, e) for e in expression.split('-')]))
+    return str(res)
+
+
+def solution(expression):
+    answer = 0
+    priorities = [
+        ('*', '-', '+'),
+        ('*', '+', '-'),
+        ('+', '*', '-'),
+        ('+', '-', '*'),
+        ('-', '*', '+'),
+        ('-', '+', '*')
+    ]
+    for priority in priorities:
+        res = int(calc(priority, 0, expression))
+        answer = max(answer, abs(res))
+    
+    return answer
+```
 
