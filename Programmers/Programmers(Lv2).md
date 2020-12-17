@@ -1565,3 +1565,41 @@ def solution(expression):
     return answer
 ```
 
+
+
+### 쿼드압축 후 개수 세기
+
+```python
+def calculate(i, j, n, arr):
+    total = 0
+    for r in range(i, i+n):
+        total += sum(arr[r][j:j+n])
+    if total == n**2:
+        for r in range(i, i+n):
+            for c in range(j, j+n):
+                arr[r][c] = 1/(n**2)
+        return arr
+    elif total == 0:
+        for r in range(i, i+n):
+            for c in range(j, j+n):
+                arr[r][c] = -1
+        arr[r][c] = 0
+        return arr
+    else:
+        return arr
+
+def solution(arr):
+    n = len(arr)
+    num_one = 0
+    num_zero = 0
+    while n != 1:
+        for i in range(0, len(arr), n):
+            for j in range(0, len(arr), n):
+                arr = calculate(i, j, n, arr)
+        n //= 2
+    for i in arr:
+        num_one += sum(i) + i.count(-1)
+        num_zero += i.count(0)
+    return num_zero, int(num_one)
+```
+
