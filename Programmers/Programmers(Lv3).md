@@ -25,3 +25,31 @@ def solution(n, edge):
     return answer
 ```
 
+
+
+### 베스트앨범
+
+```python
+def solution(genres, plays):
+    answer = []
+    num_genres = {}
+    num_plays = {}
+    for i in range(len(genres)):
+        if not genres[i] in num_genres.keys():
+            num_genres[genres[i]] = plays[i]
+            num_plays[genres[i]] = [(plays[i], i)]
+        else:
+            num_genres[genres[i]] += plays[i]
+            num_plays[genres[i]].append((plays[i], i))
+
+    for genre in sorted(num_genres.items(), key=lambda x: -x[1]):
+        plays = sorted(num_plays[genre[0]], key=lambda x: (-x[0], x[1]))
+        if len(plays) == 1:
+            answer.append(plays[0][1])
+        else:
+            for idx in range(2):
+                answer.append(plays[idx][1])
+
+    return answer
+```
+
