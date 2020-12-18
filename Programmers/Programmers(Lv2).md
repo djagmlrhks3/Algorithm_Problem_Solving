@@ -1615,7 +1615,6 @@ def solution(s):
     num_zero = 0
     while s != '1':
         num_zero += s.count("0")
-        s = s.replace("0", "")
         num = s.count('1')
         s = bin(num)[2:]
         cnt += 1
