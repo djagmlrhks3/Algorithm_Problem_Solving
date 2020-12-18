@@ -29,6 +29,8 @@ def solution(n, edge):
 
 ### 베스트앨범
 
+> 풀이 1
+
 ```python
 def solution(genres, plays):
     answer = []
@@ -50,6 +52,30 @@ def solution(genres, plays):
             for idx in range(2):
                 answer.append(plays[idx][1])
 
+    return answer
+```
+
+
+
+> 풀이 2
+
+```python
+def solution(genres, plays):
+    answer = []
+    genres_plays = {}
+    for i in range(len(genres)):
+        if not genres[i] in genres_plays.keys():
+            genres_plays[genres[i]] = [plays[i], [(plays[i], i)]]
+        else:
+            genres_plays[genres[i]][0] += plays[i]
+            genres_plays[genres[i]][1].append((plays[i], i))
+    for genre in sorted(genres_plays.values(), key=lambda x: -x[0]):
+        one_genre = sorted(genre[1], key=lambda x: (-x[0], x[1]))
+        if len(one_genre) == 1:
+            answer.append(one_genre[0][1])
+        else:
+            for idx in range(2):
+                answer.append(one_genre[idx][1])
     return answer
 ```
 
