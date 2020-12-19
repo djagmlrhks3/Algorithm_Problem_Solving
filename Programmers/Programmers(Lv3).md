@@ -79,3 +79,61 @@ def solution(genres, plays):
     return answer
 ```
 
+
+
+### 네트워크
+
+> BFS
+
+```python
+from collections import deque
+
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
+def solution(n, computers):
+    answer = 0
+    queue = deque([])
+    visited = []
+    for r in range(n):
+        for c in range(n):
+            if c in visited: break
+            if computers[r][c] and (r, c) not in visited:
+                answer += 1
+                visited.append((r, c))
+                queue.append(c)
+                while len(queue):
+                    nr = queue.popleft()
+                    for c in range(n):
+                        if computers[nr][c] and (nr, c) not in visited:
+                            visited.append((nr, c))
+                            queue.append(c)
+    return answer
+```
+
+
+
+> DFS
+
+```python
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
+def solution(n, computers):
+    answer = 0
+    stack = []
+    visited = []
+    for r in range(n):
+        for c in range(n):
+            if c in visited: break
+            if computers[r][c] and (r, c) not in visited:
+                answer += 1
+                visited.append((r, c))
+                stack.append(c)
+                while len(stack):
+                    nr = stack.pop()
+                    for c in range(n):
+                        if computers[nr][c] and (nr, c) not in visited:
+                            visited.append((nr, c))
+                            stack.append(c)
+    return answer
+```
+
