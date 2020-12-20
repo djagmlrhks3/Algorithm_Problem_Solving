@@ -137,3 +137,42 @@ def solution(n, computers):
     return answer
 ```
 
+
+
+### 단어 변환
+
+```python
+from collections import deque
+
+def check(begin, compare):
+    count = 0
+    for i in range(len(begin)):
+        a, b = begin[i], compare[i]
+        if a != b:
+            count += 1
+        if count > 1:
+            return False
+    else:
+        return True
+    
+def solution(begin, target, words):
+    if target not in words: return 0
+
+    queue = deque(words)
+    step = deque([begin])
+    cnt = 0
+    
+    while True:
+        for _ in range(len(step)):
+            start = step.popleft()
+            for i in range(len(queue)):
+                compare = queue.popleft()
+                if check(start, compare):
+                    if compare == target:
+                        return cnt + 1
+                    step.append(compare)
+                else:
+                    queue.append(compare)
+        cnt += 1
+```
+
