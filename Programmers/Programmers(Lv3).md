@@ -176,3 +176,21 @@ def solution(begin, target, words):
         cnt += 1
 ```
 
+
+
+### 정수 삼각형
+
+```python
+def solution(triangle):
+    n = len(triangle)
+    for height in range(1, n):
+        for step in range(height+1):
+            if step == 0:
+                triangle[height][step] += triangle[height-1][0]
+            elif step == height:
+                triangle[height][step] += triangle[height-1][step-1]
+            else:
+                triangle[height][step] += max(triangle[height-1][step-1], triangle[height-1][step])
+    return max(triangle[-1])
+```
+
