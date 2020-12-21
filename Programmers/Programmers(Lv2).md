@@ -1607,8 +1607,6 @@ def solution(arr):
 
 ### 이진 변환 반복하기
 
-> 풀이 1
-
 ```python
 def solution(s):
     cnt = 0
@@ -1616,22 +1614,6 @@ def solution(s):
     while s != '1':
         num_zero += s.count("0")
         num = s.count('1')
-        s = bin(num)[2:]
-        cnt += 1
-    return [cnt, num_zero]
-```
-
-
-
-> 풀이 2 (풀이1 최소화)
-
-```python
-def solution(s):
-    cnt = 0
-    num_zero = 0
-    while s != '1':
-        num = s.count("1")
-        num_zero += len(s) - num
         s = bin(num)[2:]
         cnt += 1
     return [cnt, num_zero]
