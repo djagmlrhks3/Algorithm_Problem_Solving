@@ -57,7 +57,7 @@ def solution(genres, plays):
 
 
 
-> 풀이 2
+> 풀이 2 : genres와 plays를 따로 나누지 않음
 
 ```python
 def solution(genres, plays):
@@ -192,5 +192,29 @@ def solution(triangle):
             else:
                 triangle[height][step] += max(triangle[height-1][step-1], triangle[height-1][step])
     return max(triangle[-1])
+```
+
+
+
+### 이중우선순위큐
+
+```python
+from collections import deque
+def solution(operations):
+    numbers = deque([])
+    for oper in operations:
+        order, num = oper.split(' ')
+        if order == "I":
+            numbers.append(int(num))
+        else:
+            if not len(numbers): continue
+            if num == '1':
+                numbers.remove(max(numbers))
+            else:
+                numbers.remove(min(numbers))
+    print([max(numbers), min(numbers)] if len(numbers) else [0, 0])
+    return [max(numbers), min(numbers)] if len(numbers) else [0, 0]
+
+solution(["I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"])
 ```
 
