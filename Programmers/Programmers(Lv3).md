@@ -264,3 +264,45 @@ def solution(n):
     return b % 1000000007
 ```
 
+
+
+### 여행 경로
+
+```python
+from collections import deque
+
+def solution(tickets):
+    queue = deque(tickets)
+    city = 'ICN'
+    candidate = []
+    answer = []
+    def dfs(city, queue, candidate, route):
+        nonlocal tickets, answer
+        if len(route) == len(tickets):
+            route.append(queue.popleft()[1])
+            answer = route
+            return
+
+        for _ in range(len(queue)):
+            start, end = queue.popleft()
+            if start == city:
+                candidate.append([start, end])
+            else:
+                queue.append([start, end])
+        if not len(candidate):
+            return
+        candidate = sorted(candidate, key=lambda x: x[1], reverse=True)
+        for i in range(len(candidate)):
+            new_city = candidate[i][1]
+            temp = []
+            for j in range(len(candidate)):
+                if i == j:
+                    continue
+                else:
+                    temp.append(candidate[j])
+            dfs(new_city, queue + deque(temp), [], route + [new_city])
+
+    dfs(city, queue, candidate, ['ICN'])
+    return answer
+```
+
