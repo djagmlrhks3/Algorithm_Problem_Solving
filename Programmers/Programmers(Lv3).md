@@ -252,3 +252,15 @@ def solution(arguments):
     return [-heappop(max_heap), heappop(min_heap)]
 ```
 
+
+
+### 2 x n 타일링
+
+```python
+def solution(n):
+    a, b = 1, 2
+    for i in range(n-2):
+        a, b = b, a+b
+    return b % 1000000007
+```
+
