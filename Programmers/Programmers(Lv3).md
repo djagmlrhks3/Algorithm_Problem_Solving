@@ -335,3 +335,30 @@ def solution(jobs):
     return answer // len(jobs)
 ```
 
+
+
+> 풀이 2 - heapq, deque 사용
+
+```python
+import heapq
+from collections import deque
+
+def solution(jobs):
+    queue = deque(sorted(jobs))
+    idx, length, answer, candidate = 0, 0, 0, []
+    while idx < len(jobs):
+        if not candidate:
+            start, time = queue.popleft()
+            length = start + time
+            answer += time
+        else:
+            time, start = heapq.heappop(candidate)
+            length += time
+            answer += length - start
+        idx += 1
+
+        while queue and queue[0][0] <= length:
+            heapq.heappush(candidate, queue.popleft()[::-1])
+    return answer // len(jobs)
+```
+
