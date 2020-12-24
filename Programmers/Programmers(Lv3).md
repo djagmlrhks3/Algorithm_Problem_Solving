@@ -306,3 +306,32 @@ def solution(tickets):
     return answer
 ```
 
+
+
+### 디스크 컨트롤러
+
+> 풀이 1 - deque사용
+
+```python
+from collections import deque
+
+def solution(jobs):
+    queue = deque(sorted(jobs))
+    idx, length, answer, candidate = 0, 0, 0, []
+    while idx < len(jobs):
+        if not candidate:
+            start, time = queue.popleft()
+            length = start + time
+            answer += time
+        else:
+            candidate = sorted(candidate, key=lambda x: -x[1])
+            start, time = candidate.pop()
+            length += time
+            answer += length - start
+        idx += 1
+
+        while queue and queue[0][0] <= length:
+            candidate.append(queue.popleft())
+    return answer // len(jobs)
+```
+
