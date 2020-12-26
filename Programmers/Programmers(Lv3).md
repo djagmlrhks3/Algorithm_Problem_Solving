@@ -374,3 +374,34 @@ def solution(n):
     return b % 1234567
 ```
 
+
+
+### 등굣길
+
+```python
+def solution(m, n, puddles):
+    matrix = [[0] * n for _ in range(m)]
+    for puddle in puddles:
+        matrix[puddle[0]-1][puddle[1]-1] = -1
+
+    for c in range(1, n):
+        if matrix[0][c] == 0:
+            matrix[0][c] = 1
+        else:
+            break
+    for r in range(1, m):
+        if matrix[r][0] == 0:
+            matrix[r][0] = 1
+        else:
+            break
+            
+    for row in range(1, m):
+        for col in range(1, n):
+            if matrix[row][col] == -1:continue
+            l_t = [matrix[row-1][col], matrix[row][col-1]]
+            matrix[row][col] = sum(l_t) + l_t.count(-1)
+    return matrix[m-1][n-1] % 1000000007
+```
+
+
+
