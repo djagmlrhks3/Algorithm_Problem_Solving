@@ -439,6 +439,8 @@ def solution(N, number):
 
 ### 가장 긴 팰린드롬
 
+> 나의 풀이
+
 ```python
 def solution(s):
     if len(s) == 1: return 1
@@ -446,9 +448,22 @@ def solution(s):
         for idx in range(len(s) - le + 1):
             temp = s[idx:idx+le+1]
             if temp == temp[::-1]:
-                print(len(temp))
+                return len(temp)
                 break
 ```
+
+
+
+> 다른사람의 풀이(재귀 이용) 
+>
+> 시간초과가 발생하지만 재귀를 적절히 사용한 코드
+
+```python
+def solution(s):
+    return len(s) if s[::-1] == s else max(solution(s[:-1]), solution(s[1:]))
+```
+
+
 
 
 
