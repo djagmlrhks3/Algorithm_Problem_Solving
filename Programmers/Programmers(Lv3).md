@@ -442,8 +442,8 @@ def solution(N, number):
 ```python
 def solution(s):
     if len(s) == 1: return 1
-    for le in range(len(s), 1, -1): # 7, 6, 5, 4, 3, 2
-        for idx in range(len(s) - le + 1): # 0 | 0, 1 |
+    for le in range(len(s), 1, -1):
+        for idx in range(len(s) - le + 1):
             temp = s[idx:idx+le+1]
             if temp == temp[::-1]:
                 print(len(temp))
