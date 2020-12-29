@@ -478,6 +478,59 @@ def solution(n, s):
 
 
 
+### 방문 길이
+
+```python
+def check(r, c, nr, nc, used):
+    if [[r, c], [nr, nc]] not in used and [[nr, nc], [r, c]] not in used:
+        used.append([[r, c], [nr, nc]])
+    return used
+
+def solution(dirs):
+    r, c = 5, 5
+    used = []
+    for dir in dirs:
+        if dir == "U":
+            if r-1 < 0:continue
+            used = check(r, c, r-1, c, used)
+            r -= 1
+        elif dir == "D":
+            if r+1 > 10:continue
+            used = check(r, c, r+1, c, used)
+            r += 1
+        elif dir == "R":
+            if c+1 > 10:continue
+            used = check(r, c, r, c+1, used)
+            c += 1
+        else:
+            if c-1 < 0:continue
+            used = check(r, c, r, c-1, used)
+            c -= 1
+    return len(used)
+```
+
+
+
+### 입국심사
+
+```python
+def solution(n, times):
+    answer = 0
+    left, right = 1, max(times) * n
+
+    while left < right:
+        middle = (left + right) // 2
+        total = 0
+        for time in times:
+            total += middle // time
+            if total >= n: break
+        if total >= n:
+            right = middle+1
+        else:
+            left = middle+1
+    return left
+```
+
 
 
 
