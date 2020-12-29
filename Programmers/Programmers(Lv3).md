@@ -464,6 +464,18 @@ def solution(s):
 
 
 
+### 최고의 집합
+
+```python
+def solution(n, s):
+    quotient  = s // n
+    if not quotient : return [-1]
+    answer = [quotient] * n
+    for i in range(1, (s%n)+1):
+        answer[-i] += 1
+    return answer
+```
+
 
 
 
