@@ -533,5 +533,55 @@ def solution(n, times):
 
 
 
+### 자물쇠와 열쇠
+
+```python
+def move(want, key):
+    row = len(key) - len(want)
+    col = len(key) - len(want[0])
+    for i in range(row+1):
+        for j in range(col+1):
+            flag = True
+            temp = want[::]
+            compare = [key[r][j:len(want[0])+j] for r in range(i, len(want)+i)]
+            for x in range(len(temp)):
+                for y in range(len(temp[0])):
+                    if temp[x][y] + compare[x][y] != 1:
+                        flag = False
+                        break
+            if flag:
+                return True
+    else:
+        return False
+
+def solution(key, lock):
+    sr = sc = len(lock)-1
+    er = ec = 0
+    for i in range(len(lock)):
+        if lock[i].count(0):
+            sr = min(sr, i)
+            er = max(er, i)
+            for j in range(len(lock)):
+                if not lock[i][j]:
+                    sc = min(sc, j)
+                    ec = max(ec, j)
+    if not er + ec:
+        return True
+    want = [lock[r][sc:ec + 1] for r in range(sr, er + 1)]
+    rotate = want[::]
+    for i in range(4):
+        if move(rotate, key):
+            return True
+        else:
+            rotate = []
+            for j in range(len(want[0])):
+                rotate.append([want[i][j] for i in range(-1, -len(want) - 1, -1)])
+            want = rotate[::]
+    else:
+        return False
+```
+
+
+
 
 
