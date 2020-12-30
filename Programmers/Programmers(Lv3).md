@@ -583,5 +583,57 @@ def solution(key, lock):
 
 
 
+> 90도 회전하는 코드 Tip
+
+```python
+list(zip(*iterable[::-1]))
+```
+
+
+
+따라서, 좀 더 코드를 줄이면 아래와 같다.
+
+```python
+def move(want, key):
+    row = len(key) - len(want)
+    col = len(key) - len(want[0])
+    for i in range(row+1):
+        for j in range(col+1):
+            flag = True
+            temp = want[::]
+            compare = [key[r][j:len(want[0])+j] for r in range(i, len(want)+i)]
+            for x in range(len(temp)):
+                for y in range(len(temp[0])):
+                    if temp[x][y] + compare[x][y] != 1:
+                        flag = False
+                        break
+            if flag:
+                return True
+    else:
+        return False
+
+def solution(key, lock):
+    sr = sc = len(lock)-1
+    er = ec = 0
+    for i in range(len(lock)):
+        if lock[i].count(0):
+            sr = min(sr, i)
+            er = max(er, i)
+            for j in range(len(lock)):
+                if not lock[i][j]:
+                    sc = min(sc, j)
+                    ec = max(ec, j)
+    if not er + ec:
+        return True
+    want = [lock[r][sc:ec + 1] for r in range(sr, er + 1)]
+    for i in range(4):
+        if move(want, key):
+            return True
+        else:
+            want = list(zip(*want[::-1]))
+    else:
+        return False
+```
+
 
 
