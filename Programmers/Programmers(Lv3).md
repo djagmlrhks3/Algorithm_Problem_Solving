@@ -525,7 +525,7 @@ def solution(n, times):
             total += middle // time
             if total >= n: break
         if total >= n:
-            right = middle+1
+            right = middle
         else:
             left = middle+1
     return left
