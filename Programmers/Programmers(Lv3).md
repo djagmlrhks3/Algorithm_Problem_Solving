@@ -637,3 +637,23 @@ def solution(key, lock):
 
 
 
+### 야근 지수
+
+```python
+import heapq
+def solution(n, works):
+    answer = 0
+    if n >= sum(works):
+        return 0
+    works = [-work for work in works]
+    heapq.heapify(works)
+    while n:
+        heapq.heappush(works, heapq.heappop(works)+1)
+        n -= 1
+    for work in works:
+        answer += work**2
+    return answer
+```
+
+
+
