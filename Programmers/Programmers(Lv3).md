@@ -657,3 +657,47 @@ def solution(n, works):
 
 
 
+### 섬 연결하기
+
+```python
+def solution(n, costs):
+    parent = dict()
+    rank = dict()
+    verticals = [i for i in range(n)]
+    def find(node):
+        if parent[node] != node:
+            parent[node] = find(parent[node])
+        return parent[node]
+
+    def union(node_v, node_u):
+        root1 = find(node_v)
+        root2 = find(node_u)
+
+        if rank[root1] > rank[root2]:
+            parent[root2] = root1
+        else:
+            parent[root1] = root2
+            if rank[root1] == rank[root2]:
+                rank[root2] += 1
+    def make_set(node):
+        parent[node] = node
+        rank[node] = 0
+
+    def kruskal(costs):
+        mst = list()
+
+        for node in verticals:
+            make_set(node)
+        costs = sorted(costs, key=lambda x:[x[2]])
+
+        for cost in costs:
+            start, end, pay = cost
+            if find(start) != find(end):
+                union(start, end)
+                mst.append(cost)
+        return mst
+    results = kruskal(costs)
+    
+    return sum([result[2] for result in results])
+```
+
