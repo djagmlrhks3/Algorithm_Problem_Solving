@@ -701,3 +701,23 @@ def solution(n, costs):
     return sum([result[2] for result in results])
 ```
 
+
+
+### 단속 카메라
+
+```python
+def solution(routes):
+    answer = 1
+    routes = sorted(routes, key=lambda x:[x[0], -x[1]])
+    start, end = routes[0][0], routes[0][1]
+    for idx in range(1, len(routes)):
+        if routes[idx][1] <= end:
+            start, end  = routes[idx][0], routes[idx][1]
+        elif routes[idx][0] <= end and routes[idx][1] > end:
+            start = routes[idx][0]
+        else:
+            answer += 1
+            start, end = routes[idx][0], routes[idx][1]
+    return answer
+```
+
