@@ -36,6 +36,7 @@ for unit in origin:
         orders.append(unit)
         num = ''
 orders.append(int(num))
+
 count = len(orders)//2
 move(1, 0, False, orders)
 
