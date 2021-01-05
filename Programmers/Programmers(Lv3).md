@@ -742,3 +742,28 @@ def solution(routes):
     return answer
 ```
 
+
+
+### 순위
+
+```python
+def solution(n, results):
+    answer = 0
+    win = {i:set() for i in range(1, n+1)}
+    lose = {i:set() for i in range(1, n+1)}
+    for result in results:
+        A, B = result
+        win[A].add(B)
+        lose[B].add(A)
+
+    for i in range(1, n+1):
+        for loser in win[i]:
+            lose[loser] |= lose[i]
+        for winner in lose[i]:
+            win[winner] |= win[i]
+    for i in range(1, n+1):
+        if len(lose[i] | win[i]) == n-1:
+            answer += 1
+    return answer
+```
+
