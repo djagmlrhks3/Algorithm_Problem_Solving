@@ -23,7 +23,7 @@ def move(idx, cnt, flag, orders):
 order = ['+', '-', '*']
 N = int(input())
 origin = input()
-answer = 0
+answer = -0xfffffffff
 orders = []
 candidates = []
 num = ''
