@@ -767,3 +767,50 @@ def solution(n, results):
     return answer
 ```
 
+
+
+### 거스롬돈
+
+> 테스트케이스 통과
+>
+> 효율성 실패
+
+```python
+from collections import deque
+def solution(n, money):
+    answer = 0
+    queue_num = deque([0])
+    queue_used = deque([[0] * len(money)])
+    while queue_num:
+        num = queue_num.popleft()
+        used = queue_used.popleft()
+        for idx in range(len(money)):
+            temp = used[::]
+            temp[idx] += 1
+            if num + money[idx] <= n and temp not in queue_used:
+                queue_num.append(num + money[idx])
+                queue_used.append(temp)
+                if num + money[idx] == n:
+                    answer += 1
+    return answer
+```
+
+
+
+> 정답
+
+```python
+def solution(n, money):
+    table = [[0] * (n+1) for _ in range(len(money))]
+    table[0][0] = 1
+    for i in range(money[0], n+1, money[0]):
+        table[0][i] = 1
+    for r in range(1, len(money)):
+        for c in range(n+1):
+            if c >= money[r]:
+                table[r][c] = (table[r-1][c] + table[r][c-money[r]]) % 1000000007
+            else:
+                table[r][c] = table[r-1][c]
+    return table[-1][-1]
+```
+
