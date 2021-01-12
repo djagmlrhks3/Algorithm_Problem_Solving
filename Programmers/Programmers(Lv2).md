@@ -236,33 +236,39 @@ def solution(priorities, location):
 
 ### 가장 큰 수
 
-```python
-Solution 1 : 재귀
-샘플 테스트 케이스의 경우 input의 크기가 작기 때문에 통과하였으나
-테스트 케이스의 경우 문자열의 길이가 매우크면 시간초과 및 런타임에러가 발생...
-# def perm(n, k, numbers):
-#     global answer
-#     if n == k:
-#         if int(''.join(numbers)) > answer:
-#             answer = int(''.join(numbers))
-#     else:
-#         for i in range(k, n):
-#             numbers[k], numbers[i] = numbers[i], numbers[k]
-#             perm(n, k+1, numbers)
-#             numbers[k], numbers[i] = numbers[i], numbers[k]
-# 
-# def solution(numbers):
-#     global answer
-#     numbers = list(map(str, numbers))
-#     perm(len(numbers), 0, numbers)
-#     print(answer)
-#     return None
-# answer = 0
-# numbers = [1000, 555, 464, 489, 239, 193, 134, 125, 154, 542, 75, 978, 67, 456]
-# solution(numbers)
+>풀이 1 - 재귀
+>
+>샘플 테스트 케이스의 경우 input의 크기가 작기 때문에 통과하였으나
+>테스트 케이스의 경우 문자열의 길이가 매우크면 시간초과 및 런타임에러가 발생...
 
-Solution 2 : 문자열 접근
-    
+```python
+def perm(n, k, numbers):
+    global answer
+    if n == k:
+        if int(''.join(numbers)) > answer:
+            answer = int(''.join(numbers))
+    else:
+        for i in range(k, n):
+            numbers[k], numbers[i] = numbers[i], numbers[k]
+            perm(n, k+1, numbers)
+            numbers[k], numbers[i] = numbers[i], numbers[k]
+
+def solution(numbers):
+    global answer
+    numbers = list(map(str, numbers))
+    perm(len(numbers), 0, numbers)
+    print(answer)
+    return None
+answer = 0
+numbers = [1000, 555, 464, 489, 239, 193, 134, 125, 154, 542, 75, 978, 67, 456]
+solution(numbers)
+```
+
+
+
+> 풀이 2 - 문자열 접근
+
+```python
 def solution(numbers):
     answer = '' #결과를 담을 변수
     strnum = list(map(str, numbers)) #리스트의 int형을 string형으로 변환
