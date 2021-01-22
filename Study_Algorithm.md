@@ -1,4 +1,4 @@
-# 알고리즘 공부
+# 📌 Study_Algorithm
 
 
 
@@ -1344,6 +1344,7 @@ topology_sort()
 * collections : 덱(deque), 카운터(Counter)등의 유용한 자료구조를 포함
 
 * math : 필수적인 수학적 기능을 제공하는 라이브러리다. 
+  
   * 팩토리얼, 제곱근, 최대공약수(GCD), 삼각함수, 파이(pi)
 
 
