@@ -814,3 +814,25 @@ def solution(n, money):
     return table[-1][-1]
 ```
 
+
+
+### N-Queen
+
+```python
+def solution(n):
+    vertical, left_diagonal, right_diagonal = [0] * n, [0] * (2*n-1), [0] * (2*n-1)
+    answer = 0
+    def nqueen(r):
+        nonlocal answer
+        if r == n:
+            answer += 1
+            return
+        for c in range(n):
+            if not (vertical[c] or left_diagonal[r-c+n-1] or right_diagonal[r+c]):
+                vertical[c] = left_diagonal[r-c+n-1] = right_diagonal[r+c] = 1
+                nqueen(r+1)
+                vertical[c] = left_diagonal[r-c+n-1] = right_diagonal[r+c] = 0
+    nqueen(0)
+    return answer
+```
+
