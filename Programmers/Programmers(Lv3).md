@@ -836,3 +836,22 @@ def solution(n):
     return answer
 ```
 
+
+
+### 하노이의 탑
+
+```python
+def solution(n):
+    answer = []
+    def hanoi(n, start, end, assist):
+        nonlocal answer
+        if n == 1:
+            answer.append([start, end])
+            return
+        hanoi(n-1, start, assist, end)
+        answer.append([start, end])
+        hanoi(n-1, assist, end, start)
+    hanoi(n, 1, 3, 2)
+    return answer
+```
+
