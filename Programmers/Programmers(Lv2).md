@@ -1625,3 +1625,68 @@ def solution(s):
     return [cnt, num_zero]
 ```
 
+
+
+### 메뉴 리뉴얼
+
+> 나의 풀이
+>
+> 통과는 했지만 시간이 많이 걸렸다...
+>
+> * 불필요한 변수와 과정이 많은 것이 문제였다. 
+>   * ex) candidates, new_menu는 하나의 딕셔너리로 가능
+
+```python
+from itertools import combinations
+
+def solution(orders, course):
+    answer = []
+    for k in course:
+        candidates = []
+        new_menu = {}
+        for menu in orders:
+            menu_li = list(''.join(menu))
+            for li in combinations(menu_li, k):
+                res = ''.join(sorted(li))
+                if res not in candidates:
+                    candidates.append(res)
+                else:
+                    if res not in new_menu.keys():
+                        new_menu[res] = 2
+                    else:
+                        new_menu[res] += 1
+        sort_menu = sorted(new_menu.items(), key=lambda x:[len(x[0]), x[1]])
+        if len(sort_menu):
+            now = course[-1]
+            maxi = sort_menu[-1][1]
+        while sort_menu:
+            menu, cnt = sort_menu.pop()
+            if len(menu) == now and cnt >= maxi:
+                answer.append(menu)
+            elif len(menu) != now:
+                now = len(menu)
+                maxi = cnt
+                answer.append(menu)
+    return sorted(answer)
+```
+
+
+
+> collections의 Counter 사용
+
+```python
+from itertools import combinations
+from collections import Counter
+def solution(orders, course):
+    answer = []
+    for k in course:
+        candidates = []
+        for menu_li in orders:
+            for li in combinations(menu_li, k):
+                res = ''.join(sorted(li))
+                candidates.append(res)
+        sorted_candidates = Counter(candidates).most_common()
+        answer += [menu for menu, cnt in sorted_candidates if cnt > 1 and cnt == sorted_candidates[0][1]]
+    return sorted(answer)
+```
+
