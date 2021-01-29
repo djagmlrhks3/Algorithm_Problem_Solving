@@ -1690,3 +1690,35 @@ def solution(orders, course):
     return sorted(answer)
 ```
 
+
+
+### 순위 검색
+
+> 하드 코딩(효율성 실패)
+
+```python
+def solution(info, query):
+    answer = []
+    for q in query:
+        orders = q.split()
+        cnt = 0
+        for i in info:
+            people = i.split()
+            if orders[0] != "-":
+                if orders[0] != people[0]:
+                    continue
+            if orders[2] != "-":
+                if orders[2] != people[1]:
+                    continue
+            if orders[4] != "-":
+                if orders[4] != people[2]:
+                    continue
+            if orders[6] != "-":
+                if orders[6] != people[3]:
+                    continue
+            if int(people[4]) >= int(orders[7]):
+                cnt += 1
+        answer.append(cnt)
+    return answer
+```
+
