@@ -27,6 +27,7 @@ for tc in range(T):
     powerset(N, 0, 0)
 
     print("#{} {}".format(tc+1, ans - B))
+
 # def solution(idx, total):
 #     global result, N, B
 #     #만약 N만큼 순회하였으면
