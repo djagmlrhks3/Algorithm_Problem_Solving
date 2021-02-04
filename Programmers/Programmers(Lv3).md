@@ -867,7 +867,7 @@ def solution(gems):
     if len(candidates) == 1:
         return [1, 1]
     elif len(candidates) == len(gems):
-        return [1, len(gems)]
+        return [1, len(gems)]	
     else:
         left, right = 0, 0
         start = int(1e9)
