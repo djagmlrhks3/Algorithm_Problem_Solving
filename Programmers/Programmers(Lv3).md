@@ -855,3 +855,62 @@ def solution(n):
     return answer
 ```
 
+
+
+### 보석 쇼핑
+
+> 효율성 실패
+
+```python
+def solution(gems):
+    candidates = set(gems)
+    if len(candidates) == 1:
+        return [1, 1]
+    elif len(candidates) == len(gems):
+        return [1, len(gems)]
+    else:
+        left, right = 0, 0
+        start = int(1e9)
+        length = int(1e9)
+        while left < len(gems) - len(candidates) and right < len(gems):
+            if len(set(gems[left:right+1])) == len(candidates):
+                if right - left < length:
+                    length, start = right - left, left
+                left += 1
+            else:
+                right += 1
+        return [start+1, start+length+1]
+```
+
+
+
+> 정답
+
+```python
+def solution(gems):
+    kinds = len(set(gems))
+    gems_dict = {gems[0]:1}
+    answer = [0, len(gems) - 1]
+    left , right = 0, 0
+
+    while(left < len(gems) and right < len(gems)):
+        if len(gems_dict) == kinds:
+            if right - left < answer[1] - answer[0]:
+                answer = [left, right]
+            if gems_dict[gems[left]] == 1:
+                del gems_dict[gems[left]]
+            else:
+                gems_dict[gems[left]] -= 1
+            left += 1
+        else:
+            right += 1
+            if right == len(gems):
+                break
+            if gems[right] in gems_dict.keys():
+                gems_dict[gems[right]] += 1
+            else:
+                gems_dict[gems[right]] = 1
+
+    return [answer[0]+1, answer[1]+1]
+```
+
