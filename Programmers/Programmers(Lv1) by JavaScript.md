@@ -40,3 +40,39 @@ function solution(s) {
 }
 ```
 
+
+
+### 수박수박수박수박수박수?
+
+> 나의 풀이
+
+```js
+function solution(n) {
+    var answer = '';
+    const odd = "박";
+    const even = "수";
+    for (let i = 0; i < n; i++) {
+        if (i % 2) {
+            answer += odd
+        } else {
+            answer += even
+        }
+    }
+    return answer;
+}
+```
+
+
+
+> 삼항 연산자 사용
+
+```js
+function solution(n) {
+    var answer = '';
+    for (let i = 0; i < n; i++) {
+        answer += i % 2 ? "박" : "수"; 
+    }
+    return answer;
+}
+```
+
