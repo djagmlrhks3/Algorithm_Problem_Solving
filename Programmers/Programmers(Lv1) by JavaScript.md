@@ -76,3 +76,21 @@ function solution(n) {
 }
 ```
 
+
+
+### K번째수
+
+* arr.slice()
+* arr.sort((a, b) => a- b)
+* arr.push()
+
+```js
+function solution(array, commands) {
+    var answer = [];
+    for (let arr of commands) {
+        answer.push(array.slice(arr[0]-1, arr[1]).sort((a, b) => a - b)[arr[2]-1])
+    }
+    return answer;
+}
+```
+
