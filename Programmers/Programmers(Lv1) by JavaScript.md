@@ -94,3 +94,16 @@ function solution(array, commands) {
 }
 ```
 
+
+
+### 2016
+
+```js
+function solution(a, b) {
+    var month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    var weeks = ["THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"]
+    var answer = weeks[(month.slice(0, a-1).reduce((a, b) => a+b, 0) + b) % 7]
+    return answer;
+}
+```
+
