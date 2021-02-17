@@ -107,3 +107,33 @@ function solution(a, b) {
 }
 ```
 
+
+
+### 핸드폰 번호 가리기
+
+> ※ JS는 문자열 곱셈이 불가능하다.
+>
+> 따라서, 반복문이나 repeat 함수로 대체가 가능하다.
+
+```js
+function solution(phone_number) {
+    var answer = ''
+    for (let idx = 0; idx < phone_number.length - 4; idx++) {
+        answer += '*'
+    }
+    answer += phone_number.slice(-4)
+    return answer;
+}
+```
+
+
+
+> repeat 함수 사용
+
+```js
+function solution(phone_number) {
+    var answer = '*'.repeat(phone_number.length - 4) + phone_number.slice(-4)
+    return answer;
+}
+```
+
