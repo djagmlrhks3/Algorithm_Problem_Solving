@@ -137,3 +137,30 @@ function solution(phone_number) {
 }
 ```
 
+
+
+### 문자열 내림차순으로 배치하기
+
+```js
+function solution(s) {
+    var word_li = [];
+    const words = s.split('');
+    for (let i = 0; i < s.length; i++) {
+        word_li.push(s[i])
+    }
+    word_li.sort().reverse()
+
+    return word_li.join('');
+}
+```
+
+
+
+> 함수 사용 - arr.split(), arr.sort(), arr.reverse(), arr.join()
+
+```js
+function solution(s) {
+    return s.split('').sort().reverse().join('')
+}
+```
+
