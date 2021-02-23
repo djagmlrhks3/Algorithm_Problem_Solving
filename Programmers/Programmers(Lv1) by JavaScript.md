@@ -226,3 +226,32 @@ function solution(seoul) {
 }
 ```
 
+
+
+### 문자열 내 p와 y의 개수
+
+```js
+function solution(s){
+    var num_p = 0;
+    var num_y = 0;
+    for (let idx = 0; idx < s.length; idx++) {
+        if (s[idx] === 'p' || s[idx] === 'P') {
+            num_p++
+        } else if (s[idx] === 'y' || s[idx] === 'Y') {
+            num_y++
+        }
+    }
+    return num_p === num_y ? true : false;
+}
+```
+
+
+
+> 다른 사람의 풀이 - toUpperCase(), split() 사용
+
+```js
+function solution(s){
+    return s.toUpperCase().split('P').length === s.toUpperCase().split('Y').length ? true : false
+}
+```
+
