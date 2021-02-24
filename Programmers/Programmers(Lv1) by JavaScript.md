@@ -281,3 +281,37 @@ function solution(s) {
 
 
 
+### 두 개 뽑아서 더하기
+
+```js
+function solution(numbers) {
+    var answer = [];
+    for (let i = 0; i < numbers.length-1; i++) {
+        for (let j = i+1; j < numbers.length; j++) {
+            if (!answer.includes(numbers[i] + numbers[j])) {
+                answer.push(numbers[i] + numbers[j])
+            }
+        }
+    }
+    answer.sort((a, b) => a - b)
+    return answer;
+}
+```
+
+
+
+> spread operator 사용
+
+```js
+function solution(numbers) {
+    var answer = [];
+    for (let i = 0; i < numbers.length-1; i++) {
+        for (let j = i+1; j < numbers.length; j++) {
+            answer.push(numbers[i] + numbers[j])
+        }
+    }
+    answer = [...new Set(answer)]
+    return answer.sort((a, b) => (a - b));
+}
+```
+
