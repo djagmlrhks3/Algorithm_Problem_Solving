@@ -255,3 +255,29 @@ function solution(s){
 }
 ```
 
+
+
+### 문자열을 정수로 바꾸기
+
+```js
+function solution(s) {
+    var answer = '';
+    for (let idx = 0; idx < s.length; idx++) {
+        if (s[idx] !== '+') answer += s[idx]
+    }
+    return Number(answer);
+}
+```
+
+
+
+> JS의 형변환 이용...
+
+```js
+function solution(s) {
+    return s/1
+}
+```
+
+
+
