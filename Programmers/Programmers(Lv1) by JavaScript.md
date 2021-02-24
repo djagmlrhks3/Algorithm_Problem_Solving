@@ -315,3 +315,19 @@ function solution(numbers) {
 }
 ```
 
+
+
+### 같은 숫자는 싫어
+
+```js
+function solution(arr) {
+    var answer = [arr[0]];
+    for (let idx = 1; idx < arr.length; idx++) {
+        if (answer[answer.length-1] !== arr[idx]) {
+            answer.push(arr[idx])
+        }
+    }
+    return answer;
+}
+```
+
