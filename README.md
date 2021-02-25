@@ -1,10 +1,8 @@
-# Algorithm
+# Algorithm & SQL
 
 
 
-**사용한 언어** **:** <img src="https://img.shields.io/badge/Python-3766AB?style=flat-square&logo=Python&logoColor=white"/>
-
-
+**사용한 언어** **:** <img src="https://img.shields.io/badge/-Python-61DAFB?logo=python&logoColor=white&style=for-the-badge&color=blue"/><img src="https://img.shields.io/badge/-JavaScript-61DAFB?logo=JavaScript&logoColor=white&style=for-the-badge&color=yellow"/><img src="https://img.shields.io/badge/-MySQL-61DAFB?logo=MySQL&logoColor=black&style=for-the-badge&color=beige"/>
 
 ### 문제 풀이 사이트  
 
