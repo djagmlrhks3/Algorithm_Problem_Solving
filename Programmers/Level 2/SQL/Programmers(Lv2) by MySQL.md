@@ -66,3 +66,95 @@ HAVING COUNT(NAME) > 1
 ORDER BY NAME;
 ```
 
+
+
+### 입양 시각 구하기(1)
+
+```sql
+SELECT HOUR(DATETIME) AS "HOUR", COUNT(*) AS "COUNT"
+FROM ANIMAL_OUTS
+WHERE HOUR(DATETIME) BETWEEN 9 AND 20
+GROUP BY HOUR
+ORDER BY HOUR;
+```
+
+
+
+> WHERE의 조건문을 HAVING으로 대체
+
+```sql
+SELECT HOUR(DATETIME) AS "HOUR", COUNT(*) AS "COUNT"
+FROM ANIMAL_OUTS
+GROUP BY HOUR
+HAVING HOUR BETWEEN 9 AND 20
+ORDER BY HOUR;
+```
+
+
+
+### 루시와 엘라 찾기
+
+```sql
+SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+WHERE NAME IN ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
+ORDER BY ANIMAL_ID
+```
+
+
+
+### 이름에 el이 들어가는 동물 찾기
+
+```SQL
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE NAME LIKE '%EL%' AND ANIMAL_TYPE = "Dog"
+ORDER BY NAME;
+```
+
+* My SQL에서는 기본적으로 대소문자를 구별하지 않는다. (구별하는 방법은 있다.)
+
+
+
+### 중성화 여부 파악하기
+
+```sql
+SELECT ANIMAL_ID, NAME,
+IF (SEX_UPON_INTAKE LIKE '%Neutered%' OR SEX_UPON_INTAKE LIKE 'Spayed%', 'O', 'X') AS "중성화"
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID;
+```
+
+* IF(조건, '참', '거짓')
+
+
+
+> CASE 
+>
+> WHEN 조건 THEN 결과 값
+>
+> WHEN 조건 THEN 결과 값
+>
+> ELSE 조건이 아닌 경우
+>
+> END
+
+```sql
+SELECT ANIMAL_ID, NAME, CASE
+WHEN SEX_UPON_INTAKE LIKE '%Neutered%' THEN 'O'
+WHEN SEX_UPON_INTAKE LIKE '%Spayed%' THEN 'O'
+ELSE 'X' END AS '중성화'
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID;
+```
+
+
+
+### DATETIME에서 DATE로 형 변환
+
+```SQL
+SELECT ANIMAL_ID, NAME, DATE_FORMAT(DATETIME, '%Y-%m-%d') AS "날짜"
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID;
+```
+
