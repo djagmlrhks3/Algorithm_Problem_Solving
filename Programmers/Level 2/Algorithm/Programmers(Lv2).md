@@ -192,44 +192,32 @@ def solution(arrangement):
 
 
 
-### 프린트
-
-문제 좀 제대로 이해하자...후...
+### 프린터
 
 ```python
+from collections import deque
 def solution(priorities, location):
-    from collections import deque
-    value = priorities[location] #찾으려는 문서의 중요도
-    more = [] #찾으려는 문서의 중요도보다 높은 문서를 담을 리스트
-    queue = deque() #사용할 queue
-    #priorities를 큐로 만드는 파트
-    for i in range(len(priorities)):
-        if priorities[i] > value:more.append(i)
-        queue.append((i, priorities[i]))
-    #찾으려는 문서의 중요도보다 높은 문서를 담는 파트
-    for i in priorities:
-        if i > value:more.append(i)
-    more.sort(reverse=True)
-    answer = len(more)
-    #찾으려는 중요도보다 높은 문서를 빼내는 파트
-    idx = 0
-    while idx < len(more):
-        test = queue.popleft()
-        if test[1] == more[idx]:
-            idx += 1
-        else:
-            queue.append(test)
-    #자신과 같은 우선순위가 있는지 확인하는 파트
-    flag = True
-    while flag:
-        test = queue.popleft()
-        if test[1] == value:
+    answer = 0
+    now = max(priorities)
+    cnt = [0] * (now + 1)
+    queue = deque()
+    for idx in range(len(priorities)):
+        cnt[priorities[idx]] += 1
+        queue.append([idx, priorities[idx]])
+    while queue:
+        idx, pri = queue.popleft()
+        if pri >= now:
             answer += 1
-        if test[0] == location:
-            flag = False
+            if idx == location:
+                return answer
+            cnt[pri] -=1
+            if not cnt[pri]:
+                while True:
+                    now -= 1
+                    if not now: break
+                    if cnt[now]: break
         else:
-            queue.append(test)
-    return answer
+            queue.append((idx, pri))
 ```
 
 
