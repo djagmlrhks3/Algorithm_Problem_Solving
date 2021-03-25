@@ -1,5 +1,38 @@
 # Programmers(Lv4) by MySQL
 
+### 우유와 요거트가 담긴 장바구니
+
+```mysql
+SELECT CART_ID
+FROM CART_PRODUCTS
+WHERE NAME IN ('Milk', 'Yogurt')
+GROUP BY CART_ID
+HAVING COUNT(DISTINCT NAME) >= 2
+ORDER BY CART_ID
+```
+
+
+
+### 입양 시각 구하기(2)
+
+```mysql
+WITH RECURSIVE TIME AS (
+    SELECT 0 AS H
+    UNION ALL
+    SELECT H+1 
+    FROM TIME
+    WHERE H < 23
+)
+
+SELECT H, COUNT(HOUR(DATETIME)) AS 'COUNT'
+FROM TIME
+LEFT OUTER JOIN ANIMAL_OUTS
+ON H = HOUR(DATETIME)
+GROUP BY H
+```
+
+
+
 ### 보호소에서 중성화한 동물
 
 > 중성화했으면 성별이 바뀌었을 것이므로 !=로 했다...
