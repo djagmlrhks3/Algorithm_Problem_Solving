@@ -741,3 +741,14 @@ function solution(participant, completion) {
 }
 ```
 
+
+
+### 폰켓몬
+
+```js
+function solution(nums) {
+    var nums_set = [...new Set(nums)]
+    return Math.min(nums.length/2, nums_set.length) ;
+}
+```
+
