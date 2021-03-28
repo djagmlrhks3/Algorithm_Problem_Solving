@@ -9,8 +9,7 @@ for row in matrix:
 answer = int(1e9)
 
 def calculate(row, col, d1, d2):
-    global total
-    global answer
+    global total, answer
     first, second, third, fourth = 0, 0, 0, 0
 
     col1 = col+1
