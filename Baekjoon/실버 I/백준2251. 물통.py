@@ -11,18 +11,17 @@ while queue:
         if arr[i]:
             for j in range(3):
                 if i == j: continue
-                if value[j] - arr[j]:
-                    temp = arr[::]
-                    test = temp[i] + temp[j]
-                    if test > value[j]: # 넘치는 경우
-                        temp[i] = test - value[j]
-                        temp[j] = value[j]
-                    else: # 넘치지 않는 경우
-                        temp[j] += temp[i]
-                        temp[i] = 0
-                    if temp not in visited:
-                        visited.append(temp)
-                        queue.append(temp)
+                temp = arr[::]
+                test = temp[i] + temp[j]
+                if test > value[j]: # 넘치는 경우
+                    temp[i] = test - value[j]
+                    temp[j] = value[j]
+                else: # 넘치지 않는 경우
+                    temp[j] += temp[i]
+                    temp[i] = 0
+                if temp not in visited:
+                    visited.append(temp)
+                    queue.append(temp)
 
 answer = []
 for a, b, c in visited:
