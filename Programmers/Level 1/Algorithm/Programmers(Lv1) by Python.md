@@ -573,3 +573,12 @@ def solution(new_id):
 
 
 
+### 음양 더하기
+
+```python
+def solution(absolutes, signs):
+    for i in range(len(signs)):
+        absolutes[i] *= 1 if signs[i] else -1
+    return sum(absolutes)
+```
+
