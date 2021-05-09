@@ -582,3 +582,19 @@ def solution(absolutes, signs):
     return sum(absolutes)
 ```
 
+
+
+### 로또의 최고 순위와 최저 순위
+
+```python
+def solution(lottos, win_nums):
+    rank = {6:1, 5:2, 4:3, 3:4, 2:5, 1:6, 0:6}
+    cnt, zero = 0, 0
+    for num in lottos:
+        if num in win_nums:
+            cnt += 1
+        elif num == 0:
+            zero += 1
+    return [rank[cnt+zero], rank[cnt]]
+```
+
