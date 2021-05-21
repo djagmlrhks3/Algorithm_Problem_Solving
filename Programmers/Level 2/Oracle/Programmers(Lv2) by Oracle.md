@@ -157,9 +157,9 @@ ORDER BY ANIMAL_ID;
 
 ### DATETIME에서 DATE로 형 변환
 
-```SQL
-SELECT ANIMAL_ID, NAME, DATE_FORMAT(DATETIME, '%Y-%m-%d') AS "날짜"
-FROM ANIMAL_INS
-ORDER BY ANIMAL_ID;
+```oracle
+select ANIMAL_ID, NAME, to_char(datetime, 'yyyy-mm-dd') as 날짜
+from ANIMAL_INS
+order by ANIMAL_ID;
 ```
 
