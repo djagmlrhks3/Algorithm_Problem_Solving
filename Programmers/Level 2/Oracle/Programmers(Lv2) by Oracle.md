@@ -2,7 +2,7 @@
 
 ### 최솟값 구하기
 
-```sql
+```oracle
 select DATETIME as 시간
 from (
     select DATETIME
@@ -16,7 +16,7 @@ WHERE rownum = 1
 
 ### 동물 수 구하기
 
-```sql
+```oracle
 select count(*) as count
 from ANIMAL_INS
 ```
@@ -25,19 +25,17 @@ from ANIMAL_INS
 
 ### 중복 제거하기
 
-```sql
-SELECT COUNT(DISTINCT NAME) AS "count"
-FROM ANIMAL_INS
-WHERE NAME IS NOT NULL;
+```oracle
+select count(distinct name) as count
+from ANIMAL_INS
+where NAME is not null
 ```
-
-* COUNT 하려는 column에서 중복을 제거하려면 `COUNT(DISTINCT column)` 으로 할 수 있다!
 
 
 
 ### 고양이와 개는 몇 마리 있을까
 
-```sql
+```oracle
 select ANIMAL_TYPE, count(*) as count
 from ANIMAL_INS
 group by ANIMAL_TYPE
@@ -62,7 +60,7 @@ order by ANIMAL_ID
 
 ### 동명 동물 수 찾기
 
-```sql
+```oracle
 select NAME, count(*)
 from ANIMAL_INS
 where NAME is not null
@@ -75,31 +73,26 @@ order by NAME
 
 ### 입양 시각 구하기(1)
 
-```sql
-SELECT HOUR(DATETIME) AS "HOUR", COUNT(*) AS "COUNT"
-FROM ANIMAL_OUTS
-WHERE HOUR(DATETIME) BETWEEN 9 AND 20
-GROUP BY HOUR
-ORDER BY HOUR;
+```oracle
+select hour, count(*) as count
+from (
+    select to_char(DATETIME, 'HH24') as hour
+    from ANIMAL_OUTS
+)
+group by hour
+having hour between 9 and 20
+order by hour
 ```
 
 
 
-> WHERE의 조건문을 HAVING으로 대체
-
-```sql
-SELECT HOUR(DATETIME) AS "HOUR", COUNT(*) AS "COUNT"
-FROM ANIMAL_OUTS
-GROUP BY HOUR
-HAVING HOUR BETWEEN 9 AND 20
-ORDER BY HOUR;
-```
+> 'HH24' 옵션으로 시간 값을 얻을 수 있다.
 
 
 
 ### 루시와 엘라 찾기
 
-```sql
+```oracle
 select ANIMAL_ID, NAME, SEX_UPON_INTAKE
 from ANIMAL_INS
 where NAME in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
@@ -110,7 +103,7 @@ order by ANIMAL_ID
 
 ### 이름에 el이 들어가는 동물 찾기
 
-```SQL
+```oracle
 select ANIMAL_ID, NAME
 from ANIMAL_INS
 where lower(name) like '%el%' and ANIMAL_TYPE = 'Dog'
@@ -123,16 +116,18 @@ order by name
 
 ### 중성화 여부 파악하기
 
-```sql
-SELECT ANIMAL_ID, NAME,
-IF (SEX_UPON_INTAKE LIKE '%Neutered%' OR SEX_UPON_INTAKE LIKE 'Spayed%', 'O', 'X') AS "중성화"
-FROM ANIMAL_INS
-ORDER BY ANIMAL_ID;
+```oracle
+select ANIMAl_ID, NAME, case
+    when SEX_UPON_INTAKE like '%Neutered%' then 'O'
+    when SEX_UPON_INTAKE like '%Spayed%' then 'O'
+    else 'X'
+    end
+    as 중성화
+from ANIMAL_INS
+order by ANIMAL_ID
 ```
 
-* IF(조건, '참', '거짓')
-
-
+* case문 사용
 
 > CASE 
 >
@@ -143,15 +138,6 @@ ORDER BY ANIMAL_ID;
 > ELSE 조건이 아닌 경우
 >
 > END
-
-```sql
-SELECT ANIMAL_ID, NAME, CASE
-WHEN SEX_UPON_INTAKE LIKE '%Neutered%' THEN 'O'
-WHEN SEX_UPON_INTAKE LIKE '%Spayed%' THEN 'O'
-ELSE 'X' END AS '중성화'
-FROM ANIMAL_INS
-ORDER BY ANIMAL_ID;
-```
 
 
 
