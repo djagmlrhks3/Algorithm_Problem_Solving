@@ -7,7 +7,7 @@
 #→ Python 에서의 dict 는 내부적으로 해시를 이용하여 구현되어있다. 따라서 특정한 키에 해당하는 값을 삽입, 삭제, 조회하는 데 상수 시간이 걸림
 
 def solution(participant, completion):
-    answer = ''
+    answer = ''z
     candidate = {}
     for man in participant:
         if man not in candidate:
@@ -624,5 +624,14 @@ def solution(s):
     for i in range(len(numbers)):
         s = s.replace(numbers[i], str(i))
     return int(s)
+```
+
+
+
+### 없는 숫자 더하기
+
+```python
+def solution(numbers):
+    return 45 - sum(set(numbers))
 ```
 
