@@ -635,3 +635,15 @@ def solution(numbers):
     return 45 - sum(set(numbers))
 ```
 
+
+
+### 1주차_부족한 금액 계산하기
+
+```python
+def solution(price, money, count):
+    total = 0
+    for cnt in range(count, 0, -1):
+        total += price * cnt
+    return 0 if money >= total else total - money
+```
+
