@@ -647,3 +647,36 @@ def solution(price, money, count):
     return 0 if money >= total else total - money
 ```
 
+
+
+### 2주차_상호평가
+
+```python
+def rank(avg):
+    if avg >= 90:
+        return 'A'
+    elif avg >= 80:
+        return 'B'
+    elif avg >= 70:
+        return 'C'
+    elif avg >= 50:
+        return 'D'
+    else:
+        return 'F'
+
+def solution(scores):
+    n = len(scores)
+    T = list(zip(*scores))
+    answer = ''
+
+    for i in range(n):
+        compare = T[i][i]
+        if (compare == max(T[i]) or compare == min(T[i])) and T[i].count(compare) == 1:
+            average = (sum(T[i])-compare)/(n-1)
+        else:
+            average = sum(T[i])/n
+        
+        answer += rank(average)
+    return answer
+```
+
