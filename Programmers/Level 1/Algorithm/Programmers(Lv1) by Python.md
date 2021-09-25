@@ -680,3 +680,24 @@ def solution(scores):
     return answer
 ```
 
+
+
+### 4주차_직업군 추천하기
+
+```python
+def solution(table, languages, preference):
+    answer, max_score = 'ZZZ', 0
+    for t in table:
+        row = t.split()
+        score = 0
+        for l, p in zip(languages, preference):
+            if l in row:
+                score += (6 - row.index(l)) * p
+        if score > max_score:
+            answer = row[0]
+            max_score = score
+        elif score == max_score:
+            answer = min(answer, row[0])
+    return answer
+```
+
