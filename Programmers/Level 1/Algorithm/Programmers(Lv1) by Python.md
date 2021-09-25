@@ -701,3 +701,30 @@ def solution(table, languages, preference):
     return answer
 ```
 
+
+
+### 6주차_복서 정렬하기
+
+```python
+def solution(weights, head2head):
+    N = len(head2head)
+    players = [[key+1, value] for key, value in enumerate(weights)]
+
+    for i in range(N):
+        W, L, cnt = 0, 0, 0
+        for j in range(N):
+            if head2head[i][j] == 'W':
+                W += 1
+                if weights[j] > weights[i]:
+                    cnt += 1
+            elif head2head[i][j] == 'L':
+                L += 1
+        if W + L:	
+            ratio = W / (W + L)
+        else:
+            ratio = 0
+        players[i] += [ratio, cnt]
+    result = sorted(players, key=lambda x:[-x[2], -x[3], -x[1], x[0]] )
+    return [rank[0] for rank in result]
+```
+
