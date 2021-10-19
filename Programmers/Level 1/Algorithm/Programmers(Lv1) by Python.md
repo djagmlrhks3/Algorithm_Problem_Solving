@@ -728,3 +728,14 @@ def solution(weights, head2head):
     return [rank[0] for rank in result]
 ```
 
+
+
+### 나머지가 1이 되는 수 찾기
+
+```python
+def solution(n):
+    for i in range(2, 1000001):
+        if n%i == 1:
+            return i
+```
+
