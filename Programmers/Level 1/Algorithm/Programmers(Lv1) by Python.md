@@ -739,3 +739,18 @@ def solution(n):
             return i
 ```
 
+
+
+### 최소직사각형
+
+```python
+def solution(sizes):
+    a, b = 0, 0
+    for w, h in sizes:
+        if max(w, h) >= a:
+            a = max(w, h)
+        if min(w, h) >= b:
+            b = min(w, h)
+    return a * b
+```
+
