@@ -754,3 +754,26 @@ def solution(sizes):
     return a * b
 ```
 
+
+
+### 신고 결과 받기
+
+```python
+def solution(id_list, report, k):
+    idx_list = {id_list[i] : i for i in range(len(id_list))}
+    result = {man : [] for man in id_list}
+    answer = [0] * len(id_list)
+    
+    for line in report:
+        man1, man2 = line.split()
+        if man1 not in result[man2]:
+            result[man2].append(man1)
+
+    for idx, user in enumerate(result):
+        if len(result[user]) >= k:
+            for man in result[user]:
+                answer[idx_list[man]] += 1
+    
+    return answer
+```
+
