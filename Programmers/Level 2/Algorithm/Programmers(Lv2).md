@@ -1757,3 +1757,43 @@ def solution(info, query):
 
 
 
+### 주차 요금 계산
+
+```python
+from math import ceil
+
+def calculate(time):
+    hour, minute = time.split(":")
+    return int(hour) * 60 + int(minute)
+
+def solution(fees, records):
+    minutes, now = dict(), dict()
+    answer = []
+    for record in records:
+        time, num, flag = record.split()
+        if flag == "IN":
+            now[num] = [time, "IN"]
+            if num not in minutes.keys():
+                minutes[num] = 0
+        else:
+            minutes[num] += calculate(time) - calculate(now[num][0])
+            now[num][1] = "OUT"
+            
+    for key, value in now.items():
+        if value[1] == "IN":
+            minutes[key] += calculate("23:59") - calculate(value[0])
+    
+    for num, minute in minutes.items():
+        if minute >= fees[0]:
+            minutes[num] = fees[1] + ceil((minute - fees[0]) / fees[2]) * fees[3]
+        else:
+            minutes[num] = fees[1]
+
+    for num in sorted(minutes.keys()):
+        answer.append(minutes[num])
+
+    return answer
+```
+
+
+
