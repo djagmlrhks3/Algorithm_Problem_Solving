@@ -1760,6 +1760,7 @@ def solution(info, query):
 ### 주차 요금 계산
 
 ```python
+
 from math import ceil
 
 def calculate(time):
@@ -1767,30 +1768,31 @@ def calculate(time):
     return int(hour) * 60 + int(minute)
 
 def solution(fees, records):
-    minutes, now = dict(), dict()
+    cars = dict()
     answer = []
     for record in records:
         time, num, flag = record.split()
         if flag == "IN":
-            now[num] = [time, "IN"]
-            if num not in minutes.keys():
-                minutes[num] = 0
+            if num not in cars.keys():
+                cars[num] = [time, flag, 0]
+            else:
+                cars[num][0], cars[num][1] = time, flag
         else:
-            minutes[num] += calculate(time) - calculate(now[num][0])
-            now[num][1] = "OUT"
-            
-    for key, value in now.items():
-        if value[1] == "IN":
-            minutes[key] += calculate("23:59") - calculate(value[0])
-    
-    for num, minute in minutes.items():
-        if minute >= fees[0]:
-            minutes[num] = fees[1] + ceil((minute - fees[0]) / fees[2]) * fees[3]
-        else:
-            minutes[num] = fees[1]
+            cars[num][2] += calculate(time) - calculate(cars[num][0])
+            cars[num][1] = "OUT"
 
-    for num in sorted(minutes.keys()):
-        answer.append(minutes[num])
+    for key, value in cars.items():
+        if value[1] == "IN":
+            cars[key][2] += calculate("23:59") - calculate(value[0])
+
+    for key, value in cars.items():
+        if value[2] >= fees[0]:
+            cars[key][2] = fees[1] + ceil((value[2] - fees[0]) / fees[2]) * fees[3]
+        else:
+            cars[key][2] = fees[1]
+
+    for num in sorted(cars.keys()):
+        answer.append(cars[num][2])
 
     return answer
 ```
