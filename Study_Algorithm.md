@@ -549,7 +549,7 @@ def get_smallest_node():
     min_value = INF
     index = 0 # 가장 최단 거리가 짧은 노드(인덱스)
     for i in range(1, n+1):
-        if distance[i] < min_value nand not visited[i]:
+        if distance[i] < min_value and not visited[i]:
             min_value = distance[i]
             index = i
     return index

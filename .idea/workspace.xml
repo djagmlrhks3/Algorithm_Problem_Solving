@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67ae95eb-dbad-4de5-af82-f503568c05ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Algorithm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Algorithm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programmers/Level 3/Oracle/Programmers(Lv3) by Oracle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Programmers/Level 3/Oracle/Programmers(Lv3) by Oracle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programmers/Level 4/Oracle/Programmers(Lv4) by Oracle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Programmers/Level 4/Oracle/Programmers(Lv4) by Oracle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Study_Algorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/Study_Algorithm.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,14 +32,15 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Algorithm_Solving" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.4008. 숫자 만들기">
+  <component name="RunManager">
     <configuration name="10570. 제곱 팰린드롬 수" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Algorithm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,22 +146,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.10912. 외로운 문자" />
-      <item itemvalue="Python.10804. 문자열의 거울상" />
-      <item itemvalue="Python.10761. 신뢰" />
-      <item itemvalue="Python.10570. 제곱 팰린드롬 수" />
-      <item itemvalue="Python.4008. 숫자 만들기" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.4008. 숫자 만들기" />
-        <item itemvalue="Python.10570. 제곱 팰린드롬 수" />
-        <item itemvalue="Python.10761. 신뢰" />
-        <item itemvalue="Python.10804. 문자열의 거울상" />
-        <item itemvalue="Python.10912. 외로운 문자" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -174,6 +159,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -216,26 +202,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="115" y="45" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1611158189834" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Baekjoon/Not Solved/백준14890. 경사로.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SW Expert Academy/D3/10761. 신뢰.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SW Expert Academy/D3/10570. 제곱 팰린드롬 수.py</url>
-          <line>3</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

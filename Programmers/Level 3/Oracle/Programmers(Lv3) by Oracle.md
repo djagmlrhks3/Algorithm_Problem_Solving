@@ -3,11 +3,12 @@
 ### 없어진 기록 찾기
 
 ```oracle
-select O.ANIMAL_ID, O.NAME
-from ANIMAL_OUTS O
-left join ANIMAL_INS I on I.ANIMAL_ID = O.ANIMAL_ID
-where I.DATETIME is null
-order by O.ANIMAL_ID;
+SELECT B.ANIMAL_ID, B.NAME
+  FROM ANIMAL_INS A,
+       ANIMAL_OUTS B
+ WHERE B.ANIMAL_ID = A.ANIMAL_ID(+)
+   AND A.ANIMAL_ID IS NULL
+ ORDER BY B.ANIMAL_ID
 ```
 
 
@@ -15,11 +16,12 @@ order by O.ANIMAL_ID;
 ### 있었는데요 없었습니다
 
 ```oracle
-select I.ANIMAL_ID, I.NAME
-from ANIMAL_INS I
-left outer join ANIMAL_OUTS O on I.ANIMAL_ID = O.ANIMAL_ID
-where O.DATETIME < I.DATETIME
-order by I.DATETIME
+SELECT A.ANIMAL_ID, A.NAME
+  FROM ANIMAL_INS  A,
+       ANIMAL_OUTS B
+ WHERE A.ANIMAL_ID = B.ANIMAL_ID
+   AND A.DATETIME > B.DATETIME
+ ORDER BY A.DATETIME
 ```
 
 
@@ -27,15 +29,16 @@ order by I.DATETIME
 ### 오랜 기간 보호한 동물(1)
 
 ```oracle
-select *
-from (
-    select I.NAME, I.DATETIME
-    from ANIMAL_INS I
-    left outer join ANIMAL_OUTS O on I.ANIMAL_ID = O.ANIMAL_ID
-    where O.DATETIME IS NUll
-    order by I.DATETIME
-)
-where rownum <= 3
+SELECT NAME, DATETIME
+  FROM (
+    SELECT A.NAME, A.DATETIME
+      FROM ANIMAL_INS  A
+          ,ANIMAL_OUTS B
+     WHERE A.ANIMAL_ID = B.ANIMAL_ID(+)
+       AND B.DATETIME IS NULL
+     ORDER BY A.DATETIME
+  )
+ WHERE ROWNUM <= 3
 ```
 
 > row 개수를 제한할 때 MySQL 에서는 LIMIT을 쓰지만 Oracle에서는 ROWNUM을 사용하면 된다.
@@ -47,15 +50,14 @@ where rownum <= 3
 ### 오랜 기간 보호한 동물(2)
 
 ```oracle
-select *
-from (
-    select I.ANIMAL_ID, I.NAME
-    from ANIMAL_INS I
-    left join ANIMAL_OUTS O on I.ANIMAL_ID = O.ANIMAL_ID
-    where O.DATETIME is not null
-    order by O.DATETIME - I.DATETIME desc
-    )
-where rownum <= 2
+SELECT ANIMAL_ID, NAME
+  FROM (
+    SELECT A.ANIMAL_ID, A.NAME, RANK() OVER(ORDER BY B.DATETIME - A.DATETIME DESC) AS R
+      FROM ANIMAL_INS A,
+           ANIMAL_OUTS B
+     WHERE A.ANIMAL_ID = B.ANIMAL_ID
+     )
+ WHERE R <= 2
 ```
 
 
@@ -63,15 +65,14 @@ where rownum <= 2
 ### 헤비 유저가 소유한 장소
 
 ```oracle
-select ID, NAME, HOST_ID
-from PLACES
-where HOST_ID IN (
-    select HOST_ID
-    from PLACES
-    group by HOST_ID
-    having count(*) >= 2
-)
-ORDER BY ID;
+SELECT *
+  FROM PLACES
+ WHERE HOST_ID IN (
+     SELECT HOST_ID 
+       FROM PLACES 
+      GROUP BY HOST_ID 
+     HAVING COUNT(*) > 1)
+ ORDER BY ID
 ```
 
 

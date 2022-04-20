@@ -2,33 +2,66 @@
 
 ### 우유와 요거트가 담긴 장바구니
 
-```oracle
-select CART_ID
-from CART_PRODUCTS
-where NAME in ('Milk', 'Yogurt')
-group by CART_ID
-having count(distinct NAME) >= 2
-order by CART_ID
+```SQL
+SELECT CART_ID
+  FROM CART_PRODUCTS
+ WHERE NAME = 'Milk' 
+   AND CART_ID IN (SELECT CART_ID FROM CART_PRODUCTS WHERE NAME = 'Yogurt')
+ ORDER BY CART_ID
 ```
 
 
 
 ### 입양 시각 구하기(2)
 
-```mysql
+> CONNECT BY
 
+```mysql
+SELECT A.HOUR, COUNT(B.HOUR)
+  FROM (SELECT LEVEL-1 AS HOUR
+          FROM DUAL
+       CONNECT BY LEVEL <= 24) A,
+       (SELECT TO_CHAR(DATETIME, 'HH24') AS HOUR
+          FROM ANIMAL_OUTS) B
+ WHERE A.HOUR = B.HOUR(+)
+ GROUP BY A.HOUR
+ ORDER BY A.HOUR
+```
+
+
+
+>WITH AS & RECURSIVE
+
+```SQL
+WITH TIME(H) AS (
+  SELECT 0
+    FROM DUAL
+   UNION ALL
+  SELECT H+1
+    FROM TIME
+   WHERE H < 23
+)
+SELECT A.H AS HOUR, COUNT(B.HOUR) AS COUNT
+  FROM TIME A,
+       (SELECT TO_CHAR(DATETIME, 'HH24') AS HOUR
+          FROM ANIMAL_OUTS) B
+ WHERE A.H = B.HOUR(+)
+ GROUP BY A.H
+ ORDER BY A.H
 ```
 
 
 
 ### 보호소에서 중성화한 동물
 
-```oracle
-select I.ANIMAL_ID, I.ANIMAL_TYPE, I.NAME
-from ANIMAL_INS I
-left outer join ANIMAL_OUTS O on I.ANIMAL_ID = O.ANIMAL_ID
-where (I.SEX_UPON_INTAKE not like '%Spayed%' and I.SEX_UPON_INTAKE not like '%Neutered%') and (O.SEX_UPON_OUTCOME like '%Spayed%' or O.SEX_UPON_OUTCOME like '%Neutered%')
-order by I.ANIMAL_ID
+```SQL
+SELECT A.ANIMAL_ID, A.ANIMAL_TYPE, A.NAME
+  FROM ANIMAL_INS A,
+       ANIMAL_OUTS B
+ WHERE A.ANIMAL_ID = B.ANIMAL_ID
+   AND A.SEX_UPON_INTAKE LIKE '%Intact%'
+   AND (B.SEX_UPON_OUTCOME LIKE '%Spayed%' OR B.SEX_UPON_OUTCOME LIKE '%Neutered%')
+ ORDER BY A.ANIMAL_ID
 ```
 
 
