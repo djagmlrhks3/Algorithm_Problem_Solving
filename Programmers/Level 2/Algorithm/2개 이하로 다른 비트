@@ -1,3 +1,8 @@
+"""
+문자열에서 찾고자하는 문자의 인덱스 값 얻기
+1. find  : 왼쪽 → 오른쪽
+2. rfind : 오른쪽 → 왼쪽
+"""
 def solution(numbers):
     answer = []
     for num in numbers:
