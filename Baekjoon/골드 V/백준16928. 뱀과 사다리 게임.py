@@ -2,12 +2,10 @@ import sys
 from collections import deque
 sys.stdin = open('백준16928. 뱀과 사다리 게임.txt', 'r')
 
-visited = [0] * 101
-maps = [0] * 101
+visited, maps = [0] * 101, [0] * 101
 visited[1] = 1
 N, M = map(int, input().split())
 dice = [1, 2, 3, 4, 5, 6]
-snake, ladder = dict(), dict()
 for _ in range(N):
     s, e = map(int, input().split())
     maps[s] = e
