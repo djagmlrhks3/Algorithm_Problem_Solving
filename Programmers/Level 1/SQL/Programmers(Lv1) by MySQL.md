@@ -6,15 +6,15 @@
 SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID;
 ```
 
-* ORDER BY를 그대로 적용하면 오름차순이다. - ASC 생략
+- ORDER BY를 그대로 적용하면 오름차순이다. - ASC 생략
 
   ```sql
   ORDER BY column ASC;
   ```
 
-* 내림차순 정렬은 DESC를 적어줘야 한다.
+- 내림차순 정렬은 DESC를 적어줘야 한다.
 
-  ```SQL
+  ```sql
   ORDER BY column DESC;
   ```
 
@@ -24,16 +24,14 @@ SELECT * FROM ANIMAL_INS ORDER BY ANIMAL_ID;
 
 > MAX(column) AS "String"
 
-``` sql
+```sql
 SELECT MAX(DATETIME) AS "시간"
 FROM ANIMAL_INS;
 ```
 
-
-
 > LIMIT
 
-```SQL
+```sql
 SELECT DATETIME
 FROM ANIMAL_INS
 ORDER BY DATETIME DESC
@@ -44,7 +42,7 @@ LIMIT 1;
 
 ### 역순 정렬하기
 
-```SQL
+```sql
 SELECT NAME, DATETIME
 FROM ANIMAL_INS
 ORDER BY ANIMAL_ID DESC;
@@ -92,8 +90,8 @@ WHERE NAME IS NULL
 ORDER BY ANIMAL_ID;
 ```
 
-* WHERE에서 특정 값의 일치여부를 판단할 때 `=` , `!=` 를 사용하면 된다.
-* 반면, NULL의 경우에는 `IS NULL`, `IS NOT NULL` 을 사용하면 된다.
+- WHERE에서 특정 값의 일치여부를 판단할 때 `=` , `!=` 를 사용하면 된다.
+- 반면, NULL의 경우에는 `IS NULL`, `IS NOT NULL` 을 사용하면 된다.
 
 
 
@@ -126,4 +124,3 @@ FROM ANIMAL_INS
 WHERE NAME IS NOT NULL
 ORDER BY ANIMAL_ID;
 ```
-

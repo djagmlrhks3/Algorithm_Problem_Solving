@@ -7,7 +7,7 @@
 #→ Python 에서의 dict 는 내부적으로 해시를 이용하여 구현되어있다. 따라서 특정한 키에 해당하는 값을 삽입, 삭제, 조회하는 데 상수 시간이 걸림
 
 def solution(participant, completion):
-    answer = ''
+    answer = ''z
     candidate = {}
     for man in participant:
         if man not in candidate:
@@ -572,4 +572,208 @@ def solution(new_id):
 ```
 
 
+
+### 음양 더하기
+
+```python
+def solution(absolutes, signs):
+    for i in range(len(signs)):
+        absolutes[i] *= 1 if signs[i] else -1
+    return sum(absolutes)
+```
+
+
+
+### 로또의 최고 순위와 최저 순위
+
+```python
+def solution(lottos, win_nums):
+    rank = {6:1, 5:2, 4:3, 3:4, 2:5, 1:6, 0:6}
+    cnt, zero = 0, 0
+    for num in lottos:
+        if num in win_nums:
+            cnt += 1
+        elif num == 0:
+            zero += 1
+    return [rank[cnt+zero], rank[cnt]]
+```
+
+
+
+### 약수의 개수와 덧셈
+
+```python
+def solution(left, right):
+    answer = 0
+    for num in range(left, right+1):
+        if (int(num**(0.5))) ** 2 == num:
+            answer -= num
+        else:
+            answer += num
+    return answer
+```
+
+
+
+### 숫자 문자열과 영단어
+
+```python
+def solution(s):
+    numbers = ['zero', 'one', 'two', 'three', 'four', 
+               'five', 'six', 'seven', 'eight', 'nine']
+    for i in range(len(numbers)):
+        s = s.replace(numbers[i], str(i))
+    return int(s)
+```
+
+
+
+### 없는 숫자 더하기
+
+```python
+def solution(numbers):
+    return 45 - sum(set(numbers))
+```
+
+
+
+### 1주차_부족한 금액 계산하기
+
+```python
+def solution(price, money, count):
+    total = 0
+    for cnt in range(count, 0, -1):
+        total += price * cnt
+    return 0 if money >= total else total - money
+```
+
+
+
+### 2주차_상호평가
+
+```python
+def rank(avg):
+    if avg >= 90:
+        return 'A'
+    elif avg >= 80:
+        return 'B'
+    elif avg >= 70:
+        return 'C'
+    elif avg >= 50:
+        return 'D'
+    else:
+        return 'F'
+
+def solution(scores):
+    n = len(scores)
+    T = list(zip(*scores))
+    answer = ''
+
+    for i in range(n):
+        compare = T[i][i]
+        if (compare == max(T[i]) or compare == min(T[i])) and T[i].count(compare) == 1:
+            average = (sum(T[i])-compare)/(n-1)
+        else:
+            average = sum(T[i])/n
+        
+        answer += rank(average)
+    return answer
+```
+
+
+
+### 4주차_직업군 추천하기
+
+```python
+def solution(table, languages, preference):
+    answer, max_score = 'ZZZ', 0
+    for t in table:
+        row = t.split()
+        score = 0
+        for l, p in zip(languages, preference):
+            if l in row:
+                score += (6 - row.index(l)) * p
+        if score > max_score:
+            answer = row[0]
+            max_score = score
+        elif score == max_score:
+            answer = min(answer, row[0])
+    return answer
+```
+
+
+
+### 6주차_복서 정렬하기
+
+```python
+def solution(weights, head2head):
+    N = len(head2head)
+    players = [[key+1, value] for key, value in enumerate(weights)]
+
+    for i in range(N):
+        W, L, cnt = 0, 0, 0
+        for j in range(N):
+            if head2head[i][j] == 'W':
+                W += 1
+                if weights[j] > weights[i]:
+                    cnt += 1
+            elif head2head[i][j] == 'L':
+                L += 1
+        if W + L:	
+            ratio = W / (W + L)
+        else:
+            ratio = 0
+        players[i] += [ratio, cnt]
+    result = sorted(players, key=lambda x:[-x[2], -x[3], -x[1], x[0]] )
+    return [rank[0] for rank in result]
+```
+
+
+
+### 나머지가 1이 되는 수 찾기
+
+```python
+def solution(n):
+    for i in range(2, 1000001):
+        if n%i == 1:
+            return i
+```
+
+
+
+### 최소직사각형
+
+```python
+def solution(sizes):
+    a, b = 0, 0
+    for w, h in sizes:
+        if max(w, h) >= a:
+            a = max(w, h)
+        if min(w, h) >= b:
+            b = min(w, h)
+    return a * b
+```
+
+
+
+### 신고 결과 받기
+
+```python
+def solution(id_list, report, k):
+    idx_list = {id_list[i] : i for i in range(len(id_list))}
+    result = {man : [] for man in id_list}
+    answer = [0] * len(id_list)
+    
+    for line in report:
+        man1, man2 = line.split()
+        if man1 not in result[man2]:
+            result[man2].append(man1)
+
+    for idx, user in enumerate(result):
+        if len(result[user]) >= k:
+            for man in result[user]:
+                answer[idx_list[man]] += 1
+    
+    return answer
+```
 
