@@ -1,5 +1,16 @@
 import sys
 sys.stdin = open('백준2669. 직사각형 네개의 합집합의 면적 구하기.txt', 'r')
+
+# Case 1
+candidates = set()
+for _ in range(4):
+    x1, y1, x2, y2 = map(int, input().split())
+    for r in range(100-y2, 100-y1):
+        for c in range(x1, x2):
+            candidates.add((r, c))
+print(len(candidates))
+
+# Case 2
 candidates = []
 answer = 0
 w, h = 0, 0
