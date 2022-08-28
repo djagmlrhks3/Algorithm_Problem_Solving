@@ -18,3 +18,22 @@ char* solution(int n) {
 }
 ```
 
+
+
+### 없는 숫자 더하기
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int numbers[], size_t numbers_len) {
+    int sum = 0;
+    for(int i=0; i<numbers_len; i++)
+    {
+        sum += numbers[i];
+    }
+    return 45-sum;
+}
+```
+
