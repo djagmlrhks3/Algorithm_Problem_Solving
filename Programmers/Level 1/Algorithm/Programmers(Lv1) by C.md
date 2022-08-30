@@ -37,3 +37,13 @@ int solution(int numbers[], size_t numbers_len) {
 }
 ```
 
+### 나머지가 1이 되는 수 찾기
+
+```c
+#include <stdio.h>
+
+int solution(int n) 
+{
+    for(int i=1; i<=n; i++) if(n%i == 1) return i;
+}
+```
