@@ -777,3 +777,18 @@ def solution(id_list, report, k):
     return answer
 ```
 
+### 성격 유형 검사하기
+
+```python
+def solution(survey, choices):
+    character = "RTCFJMAN"
+    scores = {c:0 for c in character}
+    answer = ''
+    for i in range(len(choices)):
+        idx = 0 if choices[i] < 4 else 1 
+        scores[survey[i][idx]] += abs(4-choices[i])
+    for i in range(0, 8, 2):
+        c1, c2 = character[i], character[i+1]
+        answer += c1 if(scores[c1] >= scores[c2]) else c2 
+    return answer
+```
