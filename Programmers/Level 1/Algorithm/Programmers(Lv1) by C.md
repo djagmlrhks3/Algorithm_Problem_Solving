@@ -75,3 +75,21 @@ int* solution(int lottos[], size_t lottos_len, int win_nums[], size_t win_nums_l
 }
 ```
 
+
+
+### 음양 더하기
+
+```c
+#include <stdio.h>
+#include <stdbool.h>
+
+int solution(int absolutes[], size_t absolutes_len, bool signs[], size_t signs_len) {
+    int answer = 0;
+    for(int i=0; i<signs_len; i++)
+    {
+        answer += signs[i]? absolutes[i]:-absolutes[i];
+    }    
+    return answer;
+}
+```
+
