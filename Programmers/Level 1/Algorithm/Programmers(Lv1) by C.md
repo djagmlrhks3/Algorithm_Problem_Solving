@@ -134,3 +134,33 @@ int solution(int left, int right) {
 
 
 
+### 3진법 뒤집기
+
+```C
+#include <stdio.h>
+#include <math.h>
+
+int solution(int n) {
+    int three[10] = {0};
+    int idx = 0;
+    while (n>2)
+    {
+        three[idx] = n%3;
+        n /= 3;
+        idx++;
+    }
+    if(n > 0)
+    {
+        three[idx] = n;
+        idx++;
+    }
+    
+    int answer = 0;
+    for(int i=0;i<idx;i++)
+    {
+        answer += three[i] * pow(3, idx-i-1);
+    }
+    return answer;
+}
+```
+
