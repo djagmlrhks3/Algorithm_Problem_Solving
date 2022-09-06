@@ -164,3 +164,39 @@ int solution(int n) {
 }
 ```
 
+
+
+### 두 개 뽑아서 더하기
+
+```C
+#include <stdio.h>
+
+int* solution(int numbers[], size_t numbers_len) {
+    int chk[201] = {0};
+    int cnt = 0;
+    for(int i=0; i<numbers_len; i++)
+    {
+        for(int j=i+1; j<numbers_len; j++)
+        {
+            int sum = numbers[i] + numbers[j];
+            if (chk[sum] == 0)
+            {
+                chk[sum] = 1;
+                cnt++;
+            }
+        }
+    }
+    int* answer = (int*)malloc(sizeof(int)*(cnt+1));
+    int idx = 0;
+    for(int i=0; i<201; i++)
+    {
+        if(chk[i])
+        {
+            answer[idx] = i;
+            idx++;
+        }
+    }
+    return answer;
+}
+```
+
