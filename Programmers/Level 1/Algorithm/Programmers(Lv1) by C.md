@@ -171,6 +171,7 @@ int solution(int n) {
 ```C
 #include <stdio.h>
 
+
 int* solution(int numbers[], size_t numbers_len) {
     int chk[201] = {0};
     int cnt = 0;
