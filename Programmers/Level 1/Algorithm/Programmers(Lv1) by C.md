@@ -171,7 +171,6 @@ int solution(int n) {
 ```C
 #include <stdio.h>
 
-
 int* solution(int numbers[], size_t numbers_len) {
     int chk[201] = {0};
     int cnt = 0;
@@ -198,6 +197,18 @@ int* solution(int numbers[], size_t numbers_len) {
         }
     }
     return answer;
+}
+```
+
+
+
+### 짝수와 홀수
+
+```c
+#include <stdio.h>
+
+char* solution(int num) {
+    return num%2? "Odd":"Even";
 }
 ```
 
