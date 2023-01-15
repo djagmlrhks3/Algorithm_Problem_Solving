@@ -10,3 +10,10 @@ def solution(array):
 
 
 
+### 편지
+
+```python
+def solution(message):
+    return len(message) * 2
+```
+
