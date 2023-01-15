@@ -180,3 +180,14 @@ SELECT WAREHOUSE_ID
 
 
 
+### 조건에 맞는 회원수 구하기
+
+```Oracle
+SELECT COUNT(*)
+  FROM USER_INFO
+ WHERE TO_CHAR(JOINED, 'YYYY') = '2021'
+   AND AGE BETWEEN 20 AND 29
+```
+
+
+
