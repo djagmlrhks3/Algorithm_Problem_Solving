@@ -39,3 +39,12 @@ def solution(num1, num2):
     return num1 % num2
 ```
 
+
+
+### 배열 두 배 만들기
+
+```python
+def solution(numbers):
+    return [num*2 for num in numbers]
+```
+
