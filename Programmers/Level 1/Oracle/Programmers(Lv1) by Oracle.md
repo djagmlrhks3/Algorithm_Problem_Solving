@@ -200,3 +200,21 @@ SELECT MAX(PRICE) MAX_PRICE
 
 
 
+### 12세 이하인 여자 환자 목록 출력하기
+
+```Oracle
+SELECT PT_NAME
+      ,PT_NO
+      ,GEND_CD
+      ,AGE
+      ,CASE WHEN TLNO IS NULL THEN 'NONE'
+            ELSE TLNO
+            END
+  FROM PATIENT
+ WHERE AGE <= 12
+   AND GEND_CD = 'W'
+ ORDER BY AGE DESC, PT_NAME
+```
+
+
+
