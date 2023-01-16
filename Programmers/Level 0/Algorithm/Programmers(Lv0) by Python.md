@@ -67,3 +67,21 @@ def solution(num1, num2):
     return 1 if num1 == num2 else -1
 ```
 
+
+
+### 두 수의 나눗셈
+
+```python
+def solution(num1, num2):
+    return int((num1 / num2) * 1000)
+```
+
+
+
+### 몫 구하기
+
+```python
+def solution(num1, num2):
+    return num1 // num2
+```
+
