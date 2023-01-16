@@ -48,3 +48,13 @@ def solution(numbers):
     return [num*2 for num in numbers]
 ```
 
+
+
+### 중앙값 구하기
+
+```python
+def solution(array):
+    array.sort()
+    return array[len(array)//2] 
+```
+
