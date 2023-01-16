@@ -191,3 +191,12 @@ SELECT COUNT(*)
 
 
 
+### 가장 비싼 상품 구하기
+
+```Oracle
+SELECT MAX(PRICE) MAX_PRICE
+  FROM PRODUCT
+```
+
+
+
