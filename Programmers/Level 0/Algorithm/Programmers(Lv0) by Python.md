@@ -58,3 +58,12 @@ def solution(array):
     return array[len(array)//2] 
 ```
 
+
+
+### 숫자 비교하기
+
+```python
+def solution(num1, num2):
+    return 1 if num1 == num2 else -1
+```
+
