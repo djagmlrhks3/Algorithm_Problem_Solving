@@ -159,3 +159,12 @@ def solution(array):
     return -1 if chk.count(max(chk)) > 1 else chk.index(max(chk))
 ```
 
+
+
+### 짝수는 싫어요
+
+```python
+def solution(n):
+    return [i for i in range(1, n+1) if i%2]
+```
+
