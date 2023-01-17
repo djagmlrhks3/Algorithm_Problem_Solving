@@ -121,3 +121,16 @@ def solution(array, n):
     return array.count(n)
 ```
 
+
+
+### 머쓱이보다 키 큰 사람
+
+```python
+def solution(array, height):
+    answer = 0
+    for h in array:
+        if h > height:
+            answer += 1
+    return answer
+```
+
