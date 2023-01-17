@@ -112,3 +112,12 @@ def solution(num1, num2):
     return num1 + num2
 ```
 
+
+
+### 중복된 숫자 개수
+
+```python
+def solution(array, n):
+    return array.count(n)
+```
+
