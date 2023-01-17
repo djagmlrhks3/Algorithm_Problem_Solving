@@ -147,3 +147,15 @@ def solution(numer1, denom1, numer2, denom2):
     return [numer//val, denom//val]
 ```
 
+
+
+### 최빈값 구하기
+
+```python
+def solution(array):
+    chk = [0] * 1000
+    for num in array:
+        chk[num]+= 1
+    return -1 if chk.count(max(chk)) > 1 else chk.index(max(chk))
+```
+
