@@ -168,3 +168,12 @@ def solution(n):
     return [i for i in range(1, n+1) if i%2]
 ```
 
+
+
+### 피자 나눠 먹기(1)
+
+```python
+def solution(n):
+    return n//7 + 1 if n%7 else n//7
+```
+
