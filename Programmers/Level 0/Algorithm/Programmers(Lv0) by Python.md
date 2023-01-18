@@ -223,3 +223,12 @@ def solution(price):
     return price
 ```
 
+
+
+### 아이스 아메리카노
+
+```python
+def solution(money):
+    return [money//5500, money%5500]
+```
+
