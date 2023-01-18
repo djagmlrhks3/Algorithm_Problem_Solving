@@ -179,6 +179,17 @@ def solution(n):
 
 
 
+### 피자 나눠 먹기(2)
+
+```python
+def solution(n):
+    for i in range(1, n+1):
+        if not (6*i % n):
+            return i
+```
+
+
+
 ### 피자 나눠 먹기(3)
 
 ```python
