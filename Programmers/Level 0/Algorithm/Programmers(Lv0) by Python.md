@@ -197,3 +197,12 @@ def solution(slice, n):
     return n // slice + 1 if n % slice else n // slice
 ```
 
+
+
+### 배열의 평균값
+
+```python
+def solution(numbers):
+    return sum(numbers) / len(numbers)
+```
+
