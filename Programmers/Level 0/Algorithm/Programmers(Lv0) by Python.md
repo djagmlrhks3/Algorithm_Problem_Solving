@@ -232,3 +232,12 @@ def solution(money):
     return [money//5500, money%5500]
 ```
 
+
+
+### 나이 출력
+
+```python
+def solution(age):
+    return 2022 - age + 1
+```
+
