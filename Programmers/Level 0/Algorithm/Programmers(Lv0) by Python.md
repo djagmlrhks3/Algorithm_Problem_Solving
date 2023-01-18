@@ -177,3 +177,12 @@ def solution(n):
     return n//7 + 1 if n%7 else n//7
 ```
 
+
+
+### 피자 나눠 먹기(3)
+
+```python
+def solution(slice, n):
+    return n // slice + 1 if n % slice else n // slice
+```
+
