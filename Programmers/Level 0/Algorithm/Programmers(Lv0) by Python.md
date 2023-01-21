@@ -241,3 +241,12 @@ def solution(age):
     return 2022 - age + 1
 ```
 
+
+
+### 배열 뒤집기
+
+```python
+def solution(num_list):
+    return num_list[::-1]
+```
+
