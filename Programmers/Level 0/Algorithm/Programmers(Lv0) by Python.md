@@ -259,3 +259,13 @@ def solution(my_string):
     return my_string[::-1]
 ```
 
+
+
+### 직각삼각형 출력하기
+
+```python
+n = int(input())
+for i in range(1, n+1):
+    print("*" * i)s
+```
+
