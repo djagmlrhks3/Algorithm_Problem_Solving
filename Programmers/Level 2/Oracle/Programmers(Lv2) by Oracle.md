@@ -197,6 +197,16 @@ SELECT A.PRODUCT_CODE, SUM(A.PRICE * B.SALES_AMOUNT) SALES
 
 
 
+### 진료과별 총 예약 횟수 출력하기
+
+```Oracle
+SELECT MCDP_CD 진료과코드, COUNT(*) "5월예약건수"
+  FROM APPOINTMENT
+ WHERE TO_CHAR(APNT_YMD, 'YYYYMM') = '202205'
+ GROUP BY MCDP_CD
+ ORDER BY 2, 1
+```
+
 
 
 
