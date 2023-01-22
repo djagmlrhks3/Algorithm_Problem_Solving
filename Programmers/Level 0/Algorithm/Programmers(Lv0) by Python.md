@@ -309,3 +309,12 @@ def solution(my_string, letter):
     return my_string.replace(letter, "")
 ````
 
+
+
+### 각도기
+
+```python
+def solution(angle):
+    return (angle // 90) * 2 + (angle % 90 > 0) * 1
+```
+
