@@ -284,3 +284,12 @@ def solution(num_list):
     return [even, odd]
 ```
 
+
+
+### 문자 반복 출력하기
+
+```python
+def solution(my_string, n):
+    return ''.join(s*n for s in my_string)
+```
+
