@@ -293,3 +293,19 @@ def solution(my_string, n):
     return ''.join(s*n for s in my_string)
 ```
 
+
+
+### 특정 문자 제거하기
+
+```python
+def solution(my_string, letter):
+    return ''.join(s for s in my_string if s not in letter)
+```
+
+
+
+````python
+def solution(my_string, letter):
+    return my_string.replace(letter, "")
+````
+
