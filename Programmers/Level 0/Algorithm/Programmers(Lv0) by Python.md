@@ -336,3 +336,12 @@ def solution(n):
     return sum(i for i in range(2, n+1, 2))
 ```
 
+
+
+### 배열 자르기
+
+```python
+def solution(numbers, num1, num2):
+    return numbers[num1:num2+1]
+```
+
