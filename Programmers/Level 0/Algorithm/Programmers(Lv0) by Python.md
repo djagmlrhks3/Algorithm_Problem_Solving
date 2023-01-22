@@ -356,3 +356,13 @@ def solution(age):
 
 
 
+### 진료순서 정하기
+
+```python
+def solution(emergency):
+    emergency_w = sorted(emergency, reverse=True)
+    return [emergency_w.index(num)+1 for num in emergency]
+```
+
+
+
