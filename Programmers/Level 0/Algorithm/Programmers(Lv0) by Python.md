@@ -345,3 +345,14 @@ def solution(numbers, num1, num2):
     return numbers[num1:num2+1]
 ```
 
+
+
+### 외계행성의 나이
+
+```python
+def solution(age):
+    return ''.join(chr(int(s)+97) for s in str(age))
+```
+
+
+
