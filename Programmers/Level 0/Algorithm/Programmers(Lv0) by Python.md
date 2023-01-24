@@ -390,6 +390,20 @@ def solution(letter):
 
 
 
+### 순서쌍의 개수
+
+```python
+def solution(n):
+    num = int(n**(0.5))
+    answer = -1 if num**2 == n else 0
+    for i in range(1, num+1):
+        if not n%i:
+            answer+=2
+    return answer
+```
+
+
+
 
 
 
