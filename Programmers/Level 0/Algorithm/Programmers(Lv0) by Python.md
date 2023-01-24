@@ -404,6 +404,32 @@ def solution(n):
 
 
 
+### 구슬을 나누는 경우의 수
+
+```python
+def solution(balls, share):
+    answer = 1
+    for i in range(2, balls+1):
+        answer*=i
+    for i in range(2, balls-share+1):
+        answer//=i
+    for i in range(2, share+1):
+        answer//=i
+    return answer
+```
+
+
+
+```python
+from math import comb
+def solution(balls, share):
+    return comb(balls, share)
+```
+
+
+
+
+
 
 
 
