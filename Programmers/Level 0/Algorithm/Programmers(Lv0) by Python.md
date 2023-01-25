@@ -460,6 +460,15 @@ def solution(num_list, n):
 
 
 
+### 인덱스 바꾸기
+
+```python
+def solution(my_string, num1, num2):
+    li = list(''.join(my_string))
+    li[num1], li[num2] = li[num2], li[num1]
+    return ''.join(li)
+```
+
 
 
 
