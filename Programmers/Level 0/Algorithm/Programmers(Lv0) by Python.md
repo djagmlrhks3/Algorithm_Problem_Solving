@@ -471,5 +471,20 @@ def solution(my_string, num1, num2):
 
 
 
+### 대문자와 소문자
+
+```python
+def solution(my_string):
+    answer = ''
+    for s in my_string:
+        if s.isupper():
+            answer += s.lower()
+        if s.islower():
+            answer += s.upper()
+    return answer
+```
+
+
+
 
 
