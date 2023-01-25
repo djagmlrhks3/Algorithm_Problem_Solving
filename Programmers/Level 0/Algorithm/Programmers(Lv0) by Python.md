@@ -504,3 +504,22 @@ def solution(n, numlist):
 
 
 
+### 배열 회전시키기
+
+> deque
+
+```python
+from collections import deque
+def solution(numbers, direction):
+    queue = deque(numbers)
+    queue.rotate(1) if direction == "right" else queue.rotate(-1)
+    return list(queue)
+```
+
+
+
+```python
+def solution(numbers, direction):
+    return numbers[1:]+[numbers[0]] if direction == "left" else [numbers[-1]] + numbers[:-1]
+```
+
