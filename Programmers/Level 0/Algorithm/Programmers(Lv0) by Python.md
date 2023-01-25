@@ -486,5 +486,12 @@ def solution(my_string):
 
 
 
+### 배열 원소의 길이
+
+```python
+def solution(strlist):
+    return [len(s) for s in strlist]
+```
+
 
 
