@@ -495,3 +495,12 @@ def solution(strlist):
 
 
 
+### n의 배수 고르기
+
+```python
+def solution(n, numlist):
+    return [num for num in numlist if not num%n]
+```
+
+
+
