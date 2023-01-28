@@ -523,3 +523,12 @@ def solution(numbers, direction):
     return numbers[1:]+[numbers[0]] if direction == "left" else [numbers[-1]] + numbers[:-1]
 ```
 
+
+
+### 369게임
+
+```python
+def solution(order):
+    return str(order).count('3')+str(order).count('6')+str(order).count('9')
+```
+
