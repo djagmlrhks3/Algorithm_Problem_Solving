@@ -532,3 +532,13 @@ def solution(order):
     return str(order).count('3')+str(order).count('6')+str(order).count('9')
 ```
 
+
+
+### 직사각형 넓이 구하기
+
+```python
+def solution(dots):
+    sort_li = sorted(dots, key=lambda x:[-x[1], -x[0]])
+    return (sort_li[0][0]-sort_li[-1][0]) * (sort_li[0][1]-sort_li[-1][1])
+```
+
