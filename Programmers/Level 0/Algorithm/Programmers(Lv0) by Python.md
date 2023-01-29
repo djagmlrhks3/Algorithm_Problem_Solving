@@ -612,5 +612,16 @@ def solution(s):
 
 
 
+### 합성수 찾기
+```python
+def solution(n):
+    li = [1, 1] + [0] * (n-1)
+    for i in range(2, n+1):
+        if not li[i]:
+            for j in range(i*i, len(li), i):
+                li[j] = 1 
+    return li.count(1)-2
+```
+
 
 
