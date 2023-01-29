@@ -593,5 +593,16 @@ def solution(my_string):
 
 
 
+### 문자열 정렬하기 (1)
+
+```python
+def solution(my_string):
+    return sorted([int(s) for s in my_string if s.isdigit()])
+```
+
+
+
+
+
 
 
