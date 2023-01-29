@@ -602,6 +602,14 @@ def solution(my_string):
 
 
 
+### 컨트롤 제트
+
+```python
+def solution(s):
+    li = s.split()
+    return sum([-int(li[i-1]) if li[i]=="Z" else int(li[i]) for i in range(len(li))])
+```
+
 
 
 
