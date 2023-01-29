@@ -584,5 +584,14 @@ def solution(n):
 
 
 
+### 모음 제거
+
+```python
+def solution(my_string):
+    return ''.join([s for s in my_string if s not in 'aeiou'])
+```
+
+
+
 
 
