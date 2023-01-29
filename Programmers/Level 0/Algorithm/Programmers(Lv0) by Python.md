@@ -623,5 +623,18 @@ def solution(n):
     return li.count(1)-2
 ```
 
+​	
 
-
+### 소인수분해
+```python
+def solution(n):
+    answer, d = [], 2
+    while d <= n:
+        if not n%d:
+            n /= d
+            if d not in answer:
+                answer.append(d)
+        else:
+            d+=1
+    return answer
+```
