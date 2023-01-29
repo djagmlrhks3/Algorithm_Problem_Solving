@@ -542,3 +542,12 @@ def solution(dots):
     return (sort_li[0][0]-sort_li[-1][0]) * (sort_li[0][1]-sort_li[-1][1])
 ```
 
+
+
+### 공 던지기
+
+```python
+def solution(numbers, k):
+    return numbers[((k-1)*2)%len(numbers)]
+```
+
