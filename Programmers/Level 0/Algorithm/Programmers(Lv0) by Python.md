@@ -571,5 +571,18 @@ def solution(my_string):
 
 
 
+### 팩토리얼
+
+```python
+def solution(n):
+    answer, factorial = 1, 1
+    while factorial < n:
+        answer += 1
+        factorial *= answer
+    return answer-1 if factorial > n else answer
+```
+
+
+
 
 
