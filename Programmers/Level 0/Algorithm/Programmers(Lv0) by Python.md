@@ -562,5 +562,14 @@ def solution(box, n):
 
 
 
+### 숨어있는 숫자의 덧셈(1)
+
+```python
+def solution(my_string):
+    return sum([int(s) for s in my_string if s.isdigit()])
+```
+
+
+
 
 
