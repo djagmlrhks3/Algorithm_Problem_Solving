@@ -638,3 +638,34 @@ def solution(n):
             d+=1
     return answer
 ```
+
+
+
+### 캐릭터의 좌표
+
+```python
+def solution(keyinput, board):
+    dir = {"left":(-1, 0), "right":(1, 0), "up":(0, 1), "down":(0, -1)}
+    answer = [0, 0]
+    for k in keyinput:
+        dx, dy = dir[k]
+        if abs(answer[0]+dx)>board[0]//2 or abs(answer[1]+dy)>board[1]//2:
+            continue
+        else:
+            answer[0]+=dx
+            answer[1]+=dy
+    return answer
+```
+
+
+
+### 가까운 수
+
+```python
+def solution(array, n):
+    arr = [(abs(num-n), num) for num in array]
+    return sorted(arr, key=lambda x:[x[0], x[1]])[0][1]
+```
+
+
+
