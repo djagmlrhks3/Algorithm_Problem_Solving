@@ -669,3 +669,10 @@ def solution(array, n):
 
 
 
+### 삼각형의 완성조건 (1)
+
+```python
+def solution(sides):
+    x, y, z = sorted(sides)
+    return 1 if x+y>z else 2
+```
