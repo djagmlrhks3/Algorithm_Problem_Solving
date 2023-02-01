@@ -699,6 +699,15 @@ def solution(my_string):
 
 
 
+### 배열의 유사도
+
+```python
+def solution(s1, s2):
+    return len(set(s1)&set(s2))
+```
+
+
+
 
 
 
