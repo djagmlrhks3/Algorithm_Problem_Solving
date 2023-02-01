@@ -676,3 +676,14 @@ def solution(sides):
     x, y, z = sorted(sides)
     return 1 if x+y>z else 2
 ```
+
+
+
+### 최댓값 만들기(2)
+
+```python
+def solution(numbers):
+    numbers.sort()
+    return max(numbers[0]*numbers[1], numbers[-1]*numbers[-2])
+```
+
