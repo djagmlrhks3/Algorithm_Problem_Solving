@@ -687,3 +687,19 @@ def solution(numbers):
     return max(numbers[0]*numbers[1], numbers[-1]*numbers[-2])
 ```
 
+
+
+### 숨어있는 숫자의 덧셈(2)
+
+```python
+def solution(my_string):
+    numbers = ''.join(s if s.isdigit() else ' ' for s in my_string)
+    return sum([int(num) for num in numbers.split()])
+```
+
+
+
+
+
+
+
