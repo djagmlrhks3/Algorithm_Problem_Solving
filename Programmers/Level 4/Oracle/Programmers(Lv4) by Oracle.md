@@ -154,3 +154,18 @@ SELECT C.APNT_NO
  ORDER BY 6
 ```
 
+
+
+### 주문량이 많은 아이스크림들 조회하기
+
+```SQL
+SELECT FLAVOR
+  FROM (SELECT A.FLAVOR, SUM(A.TOTAL_ORDER + B.TOTAL_ORDER)
+          FROM FIRST_HALF A
+              ,JULY B
+         WHERE A.FLAVOR = B.FLAVOR
+         GROUP BY A.FLAVOR
+         ORDER BY 2 DESC)
+ WHERE ROWNUM <= 3
+```
+
