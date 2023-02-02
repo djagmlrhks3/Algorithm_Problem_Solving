@@ -708,6 +708,17 @@ def solution(s1, s2):
 
 
 
+### 중복된 문자 제거
+
+```python
+def solution(my_string):
+    answer = ''
+    for s in list(''.join(my_string)):
+        if s not in answer:
+            answer += s
+    return answer
+```
+
 
 
 
