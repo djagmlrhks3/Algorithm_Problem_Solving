@@ -728,3 +728,11 @@ def solution(i, j, k):
     return sum(str(n).count(str(k)) for n in range(i, j+1))
 ```
 
+
+
+### A로 B만들기
+
+```python
+def solution(before, after):
+    return 1 if sorted(''.join(before)) == sorted(''.join(after)) else 0
+```
