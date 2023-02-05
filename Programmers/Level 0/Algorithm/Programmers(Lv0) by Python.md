@@ -746,3 +746,14 @@ def solution(str1, str2):
     return 1 if str2 in str1 else 2
 ```
 
+
+
+### 제곱수 판별하기
+
+```python
+def solution(n):
+    return 1 if int(n**(0.5))**2 == n else 2
+```
+
+
+
