@@ -757,3 +757,12 @@ def solution(n):
 
 
 
+### 암호 해독
+
+```python
+def solution(cipher, code):
+    return ''.join(cipher[i-1] for i in range(code, len(cipher)+1, code))
+```
+
+
+
