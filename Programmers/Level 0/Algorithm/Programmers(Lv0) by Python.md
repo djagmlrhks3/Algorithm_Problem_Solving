@@ -773,3 +773,11 @@ def solution(n, t):
     return n*2**t
 ```
 
+
+
+### 숫자 찾기
+
+```python
+def solution(num, k):
+    return str(num).find(str(k))+1 if str(k) in str(num) else -1
+```
