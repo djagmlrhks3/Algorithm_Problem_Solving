@@ -766,3 +766,10 @@ def solution(cipher, code):
 
 
 
+### 세균 증식
+
+```python
+def solution(n, t):
+    return n*2**t
+```
+
