@@ -790,3 +790,12 @@ def solution(num, k):
 def solution(n):
     return [i for i in range(1, n+1) if not n%i]
 ```
+
+
+
+### 문자열 정렬하기(2)
+
+```python
+def solution(my_string):
+    return ''.join(sorted([s.lower() for s in my_string]))
+```
