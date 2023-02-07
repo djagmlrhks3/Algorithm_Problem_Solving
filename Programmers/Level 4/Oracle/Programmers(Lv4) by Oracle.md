@@ -226,3 +226,28 @@ SELECT A.MEMBER_NAME, B.REVIEW_TEXT, TO_CHAR(B.REVIEW_DATE, 'YYYY-MM-DD') AS REV
                                             GROUP BY MEMBER_ID))
  ORDER BY 3, 2
 ```
+
+
+
+### 자동차 대여 기록 별 대여 금액 구하기
+
+```SQL
+SELECT B.HISTORY_ID
+      ,(A.DAILY_FEE * B.DIFF) * (100-NVL(C.DISCOUNT_RATE, 0)) * (0.01) FEE
+  FROM CAR_RENTAL_COMPANY_CAR A
+      ,(SELECT X.*
+              ,X.END_DATE-X.START_DATE+1 DIFF
+              ,CASE WHEN X.END_DATE-X.START_DATE <  7 THEN '7일 이하'
+                    WHEN X.END_DATE-X.START_DATE < 30 THEN '7일 이상'
+                    WHEN X.END_DATE-X.START_DATE < 90 THEN '30일 이상'
+                    ELSE '90일 이상'
+                    END DURATION
+          FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY X) B
+      ,CAR_RENTAL_COMPANY_DISCOUNT_PLAN C
+ WHERE A.CAR_ID = B.CAR_ID
+   AND A.CAR_TYPE = C.CAR_TYPE(+)
+   AND A.CAR_TYPE = '트럭'
+   AND B.DURATION = C.DURATION_TYPE(+)
+ ORDER BY 2 DESC, 1 DESC
+```
+
