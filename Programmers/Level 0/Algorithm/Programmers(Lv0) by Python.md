@@ -781,3 +781,12 @@ def solution(n, t):
 def solution(num, k):
     return str(num).find(str(k))+1 if str(k) in str(num) else -1
 ```
+
+
+
+### 약수 구하기
+
+```python
+def solution(n):
+    return [i for i in range(1, n+1) if not n%i]
+```
