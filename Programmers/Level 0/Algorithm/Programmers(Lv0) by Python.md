@@ -808,3 +808,12 @@ def solution(my_string):
 def solution(s):
     return ''.join(sorted(w for w in s if s.count(w) == 1))
 ```
+
+
+
+### 7의 개수
+
+```python
+def solution(array):
+    return str(array).count('7')
+```
