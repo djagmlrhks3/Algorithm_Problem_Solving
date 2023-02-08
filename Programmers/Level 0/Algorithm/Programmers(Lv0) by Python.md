@@ -799,3 +799,12 @@ def solution(n):
 def solution(my_string):
     return ''.join(sorted([s.lower() for s in my_string]))
 ```
+
+
+
+### 한 번만 등장한 문자
+
+```python
+def solution(s):
+    return ''.join(sorted(w for w in s if s.count(w) == 1))
+```
