@@ -826,3 +826,17 @@ def solution(array):
 def solution(bin1, bin2):
     return bin(int(bin1, 2)+int(bin2, 2))[2:]
 ```
+
+
+
+### 잘라서 배열로 저장하기
+
+```python
+def solution(my_str, n):
+    return [my_str[i:i+n] for i in range(0, len(my_str), n)]
+```
+
+
+
+
+
