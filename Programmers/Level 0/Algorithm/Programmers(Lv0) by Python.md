@@ -838,5 +838,12 @@ def solution(my_str, n):
 
 
 
+### 영어가 싫어요
 
+```python
+def solution(numbers):
+    for idx, num in enumerate(['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']):
+        numbers = numbers.replace(num, str(idx))
+    return int(numbers)
+```
 
