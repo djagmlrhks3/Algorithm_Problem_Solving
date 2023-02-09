@@ -817,3 +817,12 @@ def solution(s):
 def solution(array):
     return str(array).count('7')
 ```
+
+
+
+### 이진수 더하기
+
+```python
+def solution(bin1, bin2):
+    return bin(int(bin1, 2)+int(bin2, 2))[2:]
+```
