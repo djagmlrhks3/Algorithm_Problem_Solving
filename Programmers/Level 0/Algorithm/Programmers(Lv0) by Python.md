@@ -877,3 +877,12 @@ def solution(spell, dic):
             return 1
     return 2
 ```
+
+
+
+### 종이 자르기
+
+```python
+def solution(M, N):
+    return M*N-1
+```
