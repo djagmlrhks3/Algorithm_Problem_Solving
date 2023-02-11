@@ -855,3 +855,25 @@ def solution(numbers):
 def solution(my_string):
     return eval(my_string)
 ```
+
+
+
+### 외계어 사전
+
+> (1) sorted
+```python
+def solution(spell, dic):
+    for d in dic:
+        if sorted(spell) == sorted(d):
+            return 1
+    return 2
+```
+
+> (2) set
+```python
+def solution(spell, dic):
+    for d in dic:
+        if not set(spell) - set(d):
+            return 1
+    return 2
+```
