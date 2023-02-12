@@ -886,3 +886,19 @@ def solution(spell, dic):
 def solution(M, N):
     return M*N-1
 ```
+
+
+
+### 치킨 쿠폰
+
+```python
+def solution(chicken):
+    answer = 0
+    while True:
+        if chicken // 10:
+            answer += chicken//10
+            chicken = chicken//10 + chicken%10
+        else:
+            break
+    return answer
+```
