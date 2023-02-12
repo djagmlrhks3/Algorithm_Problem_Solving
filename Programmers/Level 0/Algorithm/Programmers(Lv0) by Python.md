@@ -902,3 +902,19 @@ def solution(chicken):
             break
     return answer
 ```
+
+
+
+### 로그인 성공?
+
+```python
+def solution(id_pw, db):
+    flag = False
+    for li in db:
+        id, pw = li
+        if(id == id_pw[0] and pw == id_pw[1]):
+            return "login"
+        if(id == id_pw[0] and pw != id_pw[1]):
+            flag = True
+    return "wrong pw" if flag else "fail"
+```
