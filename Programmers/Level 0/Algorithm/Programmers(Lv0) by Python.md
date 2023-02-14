@@ -919,3 +919,12 @@ def solution(id_pw, db):
     return "wrong pw" if flag else "fail"
 ```
 
+
+
+### 등수 매기기
+
+```python
+def solution(score):
+    rank = sorted([sum(s) for s in score], reverse=True)
+    return [rank.index(sum(s))+1 for s in score]
+```
