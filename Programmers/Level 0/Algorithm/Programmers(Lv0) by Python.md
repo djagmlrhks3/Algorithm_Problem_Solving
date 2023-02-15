@@ -928,3 +928,18 @@ def solution(score):
     rank = sorted([sum(s) for s in score], reverse=True)
     return [rank.index(sum(s))+1 for s in score]
 ```
+
+
+
+### 다항식 더하기
+
+```python
+def solution(polynomial):
+    a, b = 0, 0
+    for s in polynomial.split(' + '):
+        if 'x' in s:
+            a += (1 if s == 'x' else int(s[:-1]))  
+        else:
+            b += int(s)
+    return (str(a)+'x' if a > 1 else a * 'x') + (' + ' if a and b else '') + (str(b) if b else '')
+```
