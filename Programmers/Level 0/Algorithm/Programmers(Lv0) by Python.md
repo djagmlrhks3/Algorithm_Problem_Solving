@@ -943,3 +943,13 @@ def solution(polynomial):
             b += int(s)
     return (str(a)+'x' if a > 1 else a * 'x') + (' + ' if a and b else '') + (str(b) if b else '')
 ```
+
+
+
+### 특이한 정렬
+
+```python
+def solution(numlist, n):
+    rank = sorted([(abs(num-n), num)for num in numlist], key=lambda x:[x[0], -x[1]])
+    return [r[1] for r in rank]
+```
