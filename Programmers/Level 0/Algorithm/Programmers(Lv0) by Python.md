@@ -953,3 +953,12 @@ def solution(numlist, n):
     rank = sorted([(abs(num-n), num)for num in numlist], key=lambda x:[x[0], -x[1]])
     return [r[1] for r in rank]
 ```
+
+
+
+### 다음에 올 숫자
+
+```python
+def solution(common):
+    return common[-1] + common[2]-common[1] if common[2] - common[1] == common[1] - common[0] else common[-1] * common[1]/common[0]
+```
