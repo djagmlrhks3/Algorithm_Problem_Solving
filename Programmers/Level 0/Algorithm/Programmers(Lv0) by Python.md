@@ -962,3 +962,16 @@ def solution(numlist, n):
 def solution(common):
     return common[-1] + common[2]-common[1] if common[2] - common[1] == common[1] - common[0] else common[-1] * common[1]/common[0]
 ```
+
+
+
+### 문자열 밀기
+
+```python
+def solution(A, B):
+    candidates = [(A[-i:]+A[:-i], i) for i in range(len(A))]
+    for key, value in candidates:
+        if B == key:
+            return value
+    return -1
+```
