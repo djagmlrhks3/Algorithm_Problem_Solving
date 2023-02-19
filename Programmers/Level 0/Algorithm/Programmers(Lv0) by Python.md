@@ -975,3 +975,18 @@ def solution(A, B):
             return value
     return -1
 ```
+
+
+
+### 저주의 숫자 3
+
+```python
+def solution(n):
+    answer, t = 1, 1
+    while t < n:
+        if (answer+1)%3 and '3' not in str(answer+1):
+            t+=1
+        answer += 1
+    return answer
+```
+
