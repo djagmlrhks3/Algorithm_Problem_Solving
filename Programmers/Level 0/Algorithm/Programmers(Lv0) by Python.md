@@ -990,3 +990,13 @@ def solution(n):
     return answer
 ```
 
+
+
+### 연속된 수의 합
+
+```python
+import math
+def solution(num, total):   
+    start = math.ceil(total/num) - num//2
+    return [i for i in range(start, start+num)]
+```
