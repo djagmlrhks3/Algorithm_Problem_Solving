@@ -1000,3 +1000,17 @@ def solution(num, total):
     start = math.ceil(total/num) - num//2
     return [i for i in range(start, start+num)]
 ```
+
+
+
+### 삼각형의 완성조건 (2)
+
+```python
+def solution(sides):
+    answer = 0
+    a, b = max(sides), min(sides)
+    for c in range(1, 2000):
+        if (c+b > a and a >= c) or (a+b > c and c >= a):
+            answer += 1
+    return answer
+```
