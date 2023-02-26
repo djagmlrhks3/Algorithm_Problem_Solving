@@ -1014,3 +1014,24 @@ def solution(sides):
             answer += 1
     return answer
 ```
+
+
+
+### 안전지대
+
+```python
+d = [(0,1),(0,-1),(1,0),(-1,0),(1,1),(-1,1),(1,-1),(-1,-1)]
+def solution(board):
+    answer, n = 0, len(board)
+    for r in range(n):
+        for c in range(n):
+            if not board[r][c]:
+                for i in range(8):
+                    nr, nc = r+d[i][0], c+d[i][1]
+                    if 0 <= nr < n and 0 <= nc < n:
+                        if board[nr][nc]:
+                            break
+                else:
+                    answer+=1       
+    return answer
+```
