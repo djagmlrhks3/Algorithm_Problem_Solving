@@ -1035,3 +1035,13 @@ def solution(board):
                     answer+=1       
     return answer
 ```
+
+
+
+### 겹치는 선분의 길이
+
+```python
+def solution(lines):
+    li = [set(range(line[0], line[1])) for line in lines]
+    return len(li[0] & li[1] | li[1] & li[2] | li[0] & li[2])
+```
