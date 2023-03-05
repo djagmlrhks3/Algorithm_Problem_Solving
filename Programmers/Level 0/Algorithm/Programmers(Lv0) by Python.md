@@ -1045,3 +1045,25 @@ def solution(lines):
     li = [set(range(line[0], line[1])) for line in lines]
     return len(li[0] & li[1] | li[1] & li[2] | li[0] & li[2])
 ```
+
+
+
+### 옹알이(1)
+
+```python
+def solution(babbling):
+    answer = 0
+    for bab in babbling:
+        for candidate in ["aya", "ye", "woo", "ma"]:
+            if candidate in bab:
+                bab = bab.replace(candidate, ' ')
+            if not bab.strip():
+                answer += 1
+                break
+    return answer
+```
+
+
+
+
+
