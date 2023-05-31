@@ -795,12 +795,3 @@ def solution(survey, choices):
     return answer
 ```
 
-
-
-### 소문자로 바꾸기
-
-```python
-def solution(myString):
-    return myString.lower()
-```
-
