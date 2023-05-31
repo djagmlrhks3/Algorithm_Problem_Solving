@@ -290,6 +290,24 @@ SELECT *
 
 
 
+### 조건에 부합하는 중고거래 댓글 조회하기
+
+```SQL
+SELECT A.TITLE
+      ,A.BOARD_ID
+      ,B.REPLY_ID
+      ,B.WRITER_ID
+      ,B.CONTENTS
+      ,TO_CHAR(B.CREATED_DATE, 'YYYY-MM-DD')
+  FROM USED_GOODS_BOARD A
+      ,USED_GOODS_REPLY B
+ WHERE A.BOARD_ID = B.BOARD_ID
+   AND TO_CHAR(A.CREATED_DATE, 'YYYYMM') = '202210'
+ ORDER BY 6, 1
+```
+
+
+
 
 
 
