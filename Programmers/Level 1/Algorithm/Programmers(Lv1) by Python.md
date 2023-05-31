@@ -777,6 +777,8 @@ def solution(id_list, report, k):
     return answer
 ```
 
+
+
 ### 성격 유형 검사하기
 
 ```python
@@ -792,3 +794,13 @@ def solution(survey, choices):
         answer += c1 if(scores[c1] >= scores[c2]) else c2 
     return answer
 ```
+
+
+
+### 소문자로 바꾸기
+
+```python
+def solution(myString):
+    return myString.lower()
+```
+
