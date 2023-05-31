@@ -795,3 +795,19 @@ def solution(survey, choices):
     return answer
 ```
 
+
+
+### 삼총사
+
+```python
+from itertools import combinations
+def solution(number):
+    answer = 0
+    for li in combinations(number, 3):
+        if not sum(li):
+            answer += 1
+    return answer
+```
+
+
+
