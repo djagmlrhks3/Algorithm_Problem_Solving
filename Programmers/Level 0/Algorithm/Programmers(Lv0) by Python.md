@@ -1074,3 +1074,12 @@ def solution(myString):
 
 
 
+### 대문자로 바꾸기
+
+```python
+def solution(myString):
+    return myString.upper()
+```
+
+
+
