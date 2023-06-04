@@ -820,3 +820,23 @@ def solution(t, p):
 
 
 
+### 푸드 파이트 대회
+
+> CASE 1 - deque
+
+```python
+from collections import deque
+def solution(food):
+    q = deque([0])
+    for i in range(len(food)-1, 0, -1):
+        cnt = food[i]//2
+        for _ in range(cnt):
+            q.append(i)
+            q.appendleft(i)
+    return ''.join(map(str, list(q)))
+```
+
+
+
+
+
