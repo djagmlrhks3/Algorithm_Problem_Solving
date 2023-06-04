@@ -2,7 +2,7 @@
 
 ### 최솟값 구하기
 
-```oracle
+```SQL
 SELECT MIN(DATETIME) AS 시간
   FROM ANIMAL_INS
 ```
@@ -11,7 +11,7 @@ SELECT MIN(DATETIME) AS 시간
 
 ### 동물 수 구하기
 
-```oracle
+```SQL
 SELECT COUNT(*) as COUNT
   FROM ANIMAL_INS
 ```
@@ -20,7 +20,7 @@ SELECT COUNT(*) as COUNT
 
 ### 중복 제거하기
 
-```oracle
+```SQL
 SELECT COUNT(DISTINCT NAME) AS COUNT
   FROM ANIMAL_INS
  WHERE NAME IS NOT NULL
@@ -30,7 +30,7 @@ SELECT COUNT(DISTINCT NAME) AS COUNT
 
 ### 고양이와 개는 몇 마리 있을까
 
-```oracle
+```SQL
 SELECT ANIMAL_TYPE, COUNT(*) AS count
   FROM ANIMAL_INS
  GROUP BY ANIMAL_TYPE
@@ -44,7 +44,7 @@ SELECT ANIMAL_TYPE, COUNT(*) AS count
 
 ### NULL 처리하기
 
-```oracle
+```SQL
 SELECT ANIMAL_TYPE, NVL(NAME, 'No name') AS NAME, SEX_UPON_INTAKE
   FROM ANIMAL_INS
  ORDER BY ANIMAL_ID
@@ -56,7 +56,7 @@ SELECT ANIMAL_TYPE, NVL(NAME, 'No name') AS NAME, SEX_UPON_INTAKE
 
 ### 동명 동물 수 찾기
 
-```oracle
+```SQL
 SELECT NAME, COUNT(*) AS COUNT
   FROM ANIMAL_INS
  WHERE NAME IS NOT NULL
@@ -69,7 +69,7 @@ SELECT NAME, COUNT(*) AS COUNT
 
 ### 입양 시각 구하기(1)
 
-```oracle
+```SQL
 SELECT TO_NUMBER(HOUR) AS HOUR, CNT AS COUNT
   FROM (
 SELECT TO_CHAR(DATETIME, 'HH24') AS HOUR, COUNT(*) AS CNT
@@ -86,7 +86,7 @@ SELECT TO_CHAR(DATETIME, 'HH24') AS HOUR, COUNT(*) AS CNT
 
 ### 루시와 엘라 찾기
 
-```oracle
+```SQL
 SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
   FROM ANIMAL_INS
  WHERE NAME IN ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
@@ -97,7 +97,7 @@ SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
 
 ### 이름에 el이 들어가는 동물 찾기
 
-```oracle
+```SQL
 SELECT ANIMAL_ID, NAME
   FROM ANIMAL_INS
  WHERE UPPER(NAME) LIKE '%EL%'
@@ -111,7 +111,7 @@ SELECT ANIMAL_ID, NAME
 
 ### 중성화 여부 파악하기
 
-```oracle
+```SQL
 SELECT ANIMAL_ID
      , NAME
      , CASE WHEN SEX_UPON_INTAKE LIKE '%Neutered%' THEN 'O'
@@ -138,7 +138,7 @@ ORDER BY ANIMAL_ID
 
 ### DATETIME에서 DATE로 형 변환
 
-```oracle
+```SQL
 SELECT ANIMAL_ID, NAME, TO_CHAR(DATETIME, 'YYYY-MM-DD') AS 날짜
   FROM ANIMAL_INS
  ORDER BY ANIMAL_ID
@@ -148,7 +148,7 @@ SELECT ANIMAL_ID, NAME, TO_CHAR(DATETIME, 'YYYY-MM-DD') AS 날짜
 
 ### 가격이 제일 비싼 식품의 정보 출력하기
 
-```Oracle
+```SQL
 SELECT *
   FROM FOOD_PRODUCT
  WHERE PRICE = (SELECT MAX(PRICE) FROM FOOD_PRODUCT)
@@ -158,7 +158,7 @@ SELECT *
 
 ### 3월에 태어난 여성 회원 목록 출력하기
 
-```Oracle
+```SQL
 SELECT MEMBER_ID
       ,MEMBER_NAME
       ,GENDER
@@ -174,7 +174,7 @@ SELECT MEMBER_ID
 
 ### 카테고리 별 상품 개수 구하기
 
-```Oracle
+```SQL
 SELECT SUBSTR(PRODUCT_CODE, 0, 2) CATEGORY
       ,COUNT(*) PRODUCTS
   FROM PRODUCT
@@ -186,7 +186,7 @@ SELECT SUBSTR(PRODUCT_CODE, 0, 2) CATEGORY
 
 ### 상품 별 오프라인 매출 구하기
 
-```Oracle
+```SQL
 SELECT A.PRODUCT_CODE, SUM(A.PRICE * B.SALES_AMOUNT) SALES
   FROM PRODUCT A
       ,OFFLINE_SALE B
@@ -199,7 +199,7 @@ SELECT A.PRODUCT_CODE, SUM(A.PRICE * B.SALES_AMOUNT) SALES
 
 ### 진료과별 총 예약 횟수 출력하기
 
-```Oracle
+```SQL
 SELECT MCDP_CD 진료과코드, COUNT(*) "5월예약건수"
   FROM APPOINTMENT
  WHERE TO_CHAR(APNT_YMD, 'YYYYMM') = '202205'
@@ -211,7 +211,7 @@ SELECT MCDP_CD 진료과코드, COUNT(*) "5월예약건수"
 
 ### 성분으로 구분한 아이스크림 총 주문량
 
-```Oracle
+```SQL
 SELECT B.INGREDIENT_TYPE, SUM(A.TOTAL_ORDER) TOTAL_ORDER
   FROM FIRST_HALF A
       ,ICECREAM_INFO B
@@ -224,7 +224,7 @@ SELECT B.INGREDIENT_TYPE, SUM(A.TOTAL_ORDER) TOTAL_ORDER
 
 ### 자동차 종류 별 특정 옵션이 포함된 자동차 수 구하기
 
-```Oracle
+```SQL
 SELECT CAR_TYPE, COUNT(*) CARS
   FROM CAR_RENTAL_COMPANY_CAR
  WHERE OPTIONS LIKE '%통풍시트%' OR OPTIONS LIKE '%열선시트%' OR OPTIONS LIKE '%가죽시트%'
@@ -236,7 +236,7 @@ SELECT CAR_TYPE, COUNT(*) CARS
 
 ### 조건에 맞는 도서와 저자 리스트 출력하기
 
-```Oracle
+```SQL
 SELECT A.BOOK_ID
       ,B.AUTHOR_NAME
       ,TO_CHAR(A.PUBLISHED_DATE, 'YYYY-MM-DD') PUBLISHED_DATE
@@ -251,7 +251,7 @@ SELECT A.BOOK_ID
 
 ### 재구매가 일어난 상품과 회원 리스트 구하기
 
-```Oracle
+```SQL
 SELECT USER_ID, PRODUCT_ID
   FROM ONLINE_SALE
  GROUP BY USER_ID, PRODUCT_ID
@@ -263,7 +263,7 @@ SELECT USER_ID, PRODUCT_ID
 
 ### 가격대 별 상품 개수 구하기
 
-```Oracle
+```SQL
 SELECT FLOOR(PRICE/10000) * 10000 PRICE_GROUP
       ,COUNT(*) PRODUCTS
   FROM PRODUCT
@@ -282,5 +282,23 @@ SELECT CAR_ID, ROUND(AVG(RENT), 1) AVERAGE_DURATION
  GROUP BY CAR_ID
  HAVING AVG(RENT) >= 7
  ORDER BY 2 DESC, 1 DESC
+```
+
+
+
+### 조건에 부합하는 중고거래 상태 조회하기
+
+```SQL
+SELECT BOARD_ID
+      ,WRITER_ID
+      ,TITLE
+      ,PRICE
+      ,CASE STATUS WHEN 'SALE' THEN '판매중'
+                   WHEN 'RESERVED' THEN '예약중'
+                   WHEN 'DONE' THEN '거래완료'
+                   END STATUS
+  FROM USED_GOODS_BOARD
+ WHERE TO_CHAR(CREATED_DATE, 'YYYYMMDD') = '20221005'
+ ORDER BY 1 DESC
 ```
 
