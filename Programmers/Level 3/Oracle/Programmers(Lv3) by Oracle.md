@@ -1,8 +1,8 @@
-# Programmers(Lv3) by MySQL
+# Programmers(Lv3)
 
 ### 없어진 기록 찾기
 
-```oracle
+```SQL
 SELECT B.ANIMAL_ID, B.NAME
   FROM ANIMAL_INS A,
        ANIMAL_OUTS B
@@ -15,7 +15,7 @@ SELECT B.ANIMAL_ID, B.NAME
 
 ### 있었는데요 없었습니다
 
-```oracle
+```SQL
 SELECT A.ANIMAL_ID, A.NAME
   FROM ANIMAL_INS  A,
        ANIMAL_OUTS B
@@ -28,7 +28,7 @@ SELECT A.ANIMAL_ID, A.NAME
 
 ### 오랜 기간 보호한 동물(1)
 
-```oracle
+```SQL
 SELECT NAME, DATETIME
   FROM (
     SELECT A.NAME, A.DATETIME
@@ -49,7 +49,7 @@ SELECT NAME, DATETIME
 
 ### 오랜 기간 보호한 동물(2)
 
-```oracle
+```SQL
 SELECT ANIMAL_ID, NAME
   FROM (
     SELECT A.ANIMAL_ID, A.NAME, RANK() OVER(ORDER BY B.DATETIME - A.DATETIME DESC) AS R
@@ -64,7 +64,7 @@ SELECT ANIMAL_ID, NAME
 
 ### 헤비 유저가 소유한 장소
 
-```oracle
+```SQL
 SELECT *
   FROM PLACES
  WHERE HOST_ID IN (
@@ -79,7 +79,7 @@ SELECT *
 
 ### 조건별로 분류하여 주문상태 출력하기
 
-```Oracle
+```SQL
 SELECT ORDER_ID
       ,PRODUCT_ID
       ,TO_CHAR(OUT_DATE, 'YYYY-MM-DD')
@@ -95,7 +95,7 @@ SELECT ORDER_ID
 
 ### 즐겨찾기가 가장 많은 식당 정보 출력하기
 
-```Oracle
+```SQL
 SELECT FOOD_TYPE, REST_ID, REST_NAME, FAVORITES
   FROM REST_INFO
  WHERE (FOOD_TYPE, FAVORITES) IN (SELECT FOOD_TYPE, MAX(FAVORITES) FAVORITES
@@ -108,7 +108,7 @@ SELECT FOOD_TYPE, REST_ID, REST_NAME, FAVORITES
 
 ### 카테고리 별 도서 판매량 집계하기
 
-```Oracle
+```SQL
 SELECT A.CATEGORY, SUM(B.SALES) TOTAL_SALES
   FROM BOOK A
       ,BOOK_SALES B
@@ -149,3 +149,23 @@ SELECT DISTINCT A.CAR_ID
    AND TO_CHAR(START_DATE, 'MM') = '10'
  ORDER BY 1 DESC
 ```
+
+
+
+### 조건에 맞는 사용자와 총 거래금액 조회하기
+
+> CASE 1	
+
+```SQL
+SELECT A.WRITER_ID
+      ,B.NICKNAME
+      ,SUM(A.PRICE)
+  FROM USED_GOODS_BOARD A
+      ,USED_GOODS_USER B
+ WHERE A.WRITER_ID = B.USER_ID
+   AND A.STATUS = 'DONE'
+ GROUP BY A.WRITER_ID, B.NICKNAME
+ HAVING SUM(A.PRICE) >= 700000
+ ORDER BY 3
+```
+
