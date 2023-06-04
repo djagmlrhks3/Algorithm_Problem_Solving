@@ -1096,3 +1096,12 @@ def solution(num_list):
     return result
 ```
 
+
+
+### n번째 원소까지
+
+```python
+def solution(num_list, n):
+    return [num_list[i] for i in range(n)]
+```
+
