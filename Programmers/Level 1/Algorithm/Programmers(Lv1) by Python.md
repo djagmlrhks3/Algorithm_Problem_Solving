@@ -850,3 +850,39 @@ def solution(food):
 
 
 
+### 가장 가까운 같은 글자
+
+> CASE 1 - list
+
+```python
+def solution(s):
+    english = [-1] * 26
+    answer = [0] * len(s)
+    for i in range(len(s)):
+        idx = ord(s[i])-ord('a')
+        if english[idx] == -1:
+            answer[i] = -1
+            english[idx] = i
+        else:
+            answer[i] = i-english[idx]
+            english[idx] = i      
+    return answer
+```
+
+
+
+> CASE 2 - dict
+
+```python
+def solution(s):
+    answer, d = [], dict()
+    for idx in range(len(s)):
+        if s[idx] not in d:
+            d[s[idx]] = idx
+            answer.append(-1)
+        else:
+            answer.append(idx-d[s[idx]])
+            d[s[idx]] = idx
+    return answer
+```
+
