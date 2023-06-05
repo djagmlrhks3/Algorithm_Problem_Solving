@@ -1105,3 +1105,12 @@ def solution(num_list, n):
     return [num_list[i] for i in range(n)]
 ```
 
+
+
+### 정수 찾기
+
+```python
+def solution(num_list, n):
+    return 1 if n in num_list else 0
+```
+
