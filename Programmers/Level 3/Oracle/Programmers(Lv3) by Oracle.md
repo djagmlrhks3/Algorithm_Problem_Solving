@@ -185,3 +185,19 @@ ORDER BY 3
 
 
 
+### 조건에 맞는 사용자 정보 조회하기
+
+```SQL
+SELECT B.USER_ID
+      ,B.NICKNAME
+      ,CONCAT(B.CITY, ' ') || CONCAT(B.STREET_ADDRESS1, ' ') || B.STREET_ADDRESS2 "전체주소"
+      ,CONCAT(SUBSTR(TLNO, 1, 3), '-') || CONCAT(SUBSTR(TLNO, 4, 4), '-') || SUBSTR(TLNO, 8, 4) "전화번호"
+  FROM (SELECT WRITER_ID
+         FROM USED_GOODS_BOARD
+        GROUP BY WRITER_ID
+        HAVING COUNT(*) >= 3) A
+      ,USED_GOODS_USER B
+ WHERE A.WRITER_ID = B.USER_ID
+ ORDER BY 1 DESC
+```
+
