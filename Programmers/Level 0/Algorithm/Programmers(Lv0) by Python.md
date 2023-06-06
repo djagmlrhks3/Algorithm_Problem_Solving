@@ -1123,3 +1123,12 @@ def solution(a, b, flag):
     return a+b if flag else a-b
 ```
 
+
+
+### n개 간격의 원소들
+
+```python
+def solution(num_list, n):
+    return [num_list[i] for i in range(0, len(num_list), n)]
+```
+
