@@ -1141,3 +1141,12 @@ def solution(rny_string):
     return rny_string.replace('m', 'rn')
 ```
 
+
+
+### 정수 부분
+
+```python
+def solution(flo):
+    return int(flo)
+```
+
