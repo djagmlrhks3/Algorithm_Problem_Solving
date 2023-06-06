@@ -201,3 +201,17 @@ SELECT B.USER_ID
  ORDER BY 1 DESC
 ```
 
+
+
+### 조회수가 가장 많은 중고거래 게시판의 첨부파일 조회하기
+
+```SQL
+SELECT '/home/grep/src/' || A.BOARD_ID || '/' || FILE_ID || FILE_NAME || FILE_EXT FILE_PATH
+  FROM USED_GOODS_FILE A
+      ,(SELECT BOARD_ID
+          FROM USED_GOODS_BOARD
+         WHERE VIEWS = (SELECT MAX(VIEWS) FROM USED_GOODS_BOARD)) B
+ WHERE A.BOARD_ID = B.BOARD_ID
+ORDER BY FILE_ID DESC
+```
+
