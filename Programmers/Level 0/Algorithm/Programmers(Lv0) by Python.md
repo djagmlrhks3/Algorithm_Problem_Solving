@@ -1162,3 +1162,12 @@ def solution(num_list):
     return -1
 ```
 
+
+
+### 문자열로 변환
+
+```python
+def solution(n):
+    return str(n)
+```
+
