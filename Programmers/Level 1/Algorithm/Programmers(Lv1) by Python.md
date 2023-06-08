@@ -901,3 +901,20 @@ def solution(a, b, n):
     return answer
 ```
 
+
+
+### 추억 점수
+
+```python
+def solution(name, yearning, photo):
+    board = {name[i]:yearning[i] for i in range(len(name))}
+    answer = []
+    for p in photo:
+        score = 0
+        for n in p:
+            if board.get(n):
+                score += board.get(n)
+        answer.append(score)
+    return answer
+```
+
