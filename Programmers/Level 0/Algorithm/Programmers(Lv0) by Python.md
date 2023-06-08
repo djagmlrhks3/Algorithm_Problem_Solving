@@ -1200,6 +1200,24 @@ def solution(n_str):
 
 
 
+### 문자열 정수의 합
+
+> CASE 1
+
+```python
+def solution(num_str):
+    return sum([int(num) for num in num_str])
+```
+
+
+
+> CASE 2
+
+```python
+def solution(num_str):
+    return sum(map(int, list(num_str))) 
+```
+
 
 
 
