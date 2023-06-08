@@ -1191,6 +1191,15 @@ def solution(number, n, m):
 
 
 
+### 문자열을 정수로 변환하기
+
+```python
+def solution(n_str):
+    return int(n_str)
+```
+
+
+
 
 
 
