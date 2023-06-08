@@ -1182,6 +1182,15 @@ def solution(my_string, n):
 
 
 
+### 공배수
+
+```python
+def solution(number, n, m):
+    return 1 if not((number%n)+(number%m)) else 0
+```
+
+
+
 
 
 
