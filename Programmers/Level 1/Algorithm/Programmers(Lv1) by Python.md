@@ -886,3 +886,18 @@ def solution(s):
     return answer
 ```
 
+
+
+### 콜라 문제
+
+```python
+def solution(a, b, n):
+    answer = 0
+    while n >= a:
+        get = n//a * b
+        answer += get
+        n -= (n//a * a)
+        n += get
+    return answer
+```
+
