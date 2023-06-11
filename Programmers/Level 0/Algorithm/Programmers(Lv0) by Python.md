@@ -1229,6 +1229,25 @@ def solution(my_string, n):
 
 
 
+### 카운트 업
+
+```python
+def solution(start, end):
+    return [num for num in range(start, end+1)]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
