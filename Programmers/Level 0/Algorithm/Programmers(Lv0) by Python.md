@@ -1247,6 +1247,21 @@ def solution(num, n):
 
 
 
+### 배열에서 문자열 대소문자 변환하기
+
+```python
+def solution(strArr):
+    return [strArr[i].upper() if i%2 else strArr[i].lower() for i in range(len(strArr))]
+```
+
+
+
+
+
+
+
+
+
 
 
 
