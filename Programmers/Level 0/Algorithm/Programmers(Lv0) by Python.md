@@ -1265,6 +1265,18 @@ def solution(num_list, n):
 
 
 
+### 원소들의 곱과 합
+
+```python
+def solution(num_list):
+    multiple = 1
+    for num in num_list:
+        multiple *= num
+    return 1 if multiple < sum(num_list) ** 2 else 0
+```
+
+
+
 
 
 
