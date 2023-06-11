@@ -920,3 +920,22 @@ def solution(name, yearning, photo):
 
 
 
+### 명예의 전당 (1)
+
+```python
+from heapq import heappush, heappop
+def solution(k, score):
+    answer, heap = [], []
+    for s in score:
+        if len(heap) < k:
+            heappush(heap, s)
+        else:
+            now_min = heappop(heap)
+            if now_min < s:
+                heappush(heap, s)
+            else:
+                heappush(heap, now_min)
+        answer.append(min(heap))
+    return answer
+```
+
