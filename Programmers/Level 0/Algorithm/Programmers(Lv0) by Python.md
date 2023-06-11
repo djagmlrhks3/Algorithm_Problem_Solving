@@ -1256,6 +1256,13 @@ def solution(strArr):
 
 
 
+### n번째 원소부터
+
+```python
+def solution(num_list, n):
+    return [num_list[i] for i in range(n-1, len(num_list))]
+```
+
 
 
 
