@@ -1358,6 +1358,13 @@ def solution(my_string, index_list):
 
 
 
+### 접미사인지 확인하기
+
+```python
+def solution(my_string, is_suffix):
+    return 1 if my_string[-len(is_suffix):] == is_suffix else 0
+```
+
 
 
 
