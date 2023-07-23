@@ -1295,6 +1295,15 @@ def solution(my_string, k):
 
 
 
+### 조건에 맞게 수열 변환하기 1
+
+```python
+def solution(arr):
+    return [a//2 if (a >= 50 and not a%2) else (a*2 if a < 50 and a%2 else a) for a in arr]
+```
+
+
+
 
 
 
