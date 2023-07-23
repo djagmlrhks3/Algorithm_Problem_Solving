@@ -1322,6 +1322,17 @@ def solution(str1, str2):
 
 
 
+### 카운트 다운
+
+```python
+def solution(start, end):
+    return [i for i in range(start, end-1, -1)]
+```
+
+
+
+
+
 
 
 
