@@ -1349,6 +1349,15 @@ def solution(arr, k):
 
 
 
+### 글자 이어 붙여 문자열 만들기
+
+```python
+def solution(my_string, index_list):
+    return ''.join([my_string[idx] for idx in index_list])
+```
+
+
+
 
 
 
