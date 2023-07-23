@@ -1313,6 +1313,15 @@ def solution(my_string, is_prefix):
 
 
 
+### 부분 문자열
+
+```python
+def solution(str1, str2):
+    return 1 if str2.count(str1) else 0
+```
+
+
+
 
 
 
