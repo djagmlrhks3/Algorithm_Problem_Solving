@@ -1277,6 +1277,15 @@ def solution(num_list):
 
 
 
+### 부분 문자열인지 확인하기
+
+```python
+def solution(my_string, target):
+    return 1 if my_string.count(target) else 0
+```
+
+
+
 
 
 
