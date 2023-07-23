@@ -1331,6 +1331,22 @@ def solution(start, end):
 
 
 
+### 조건에 맞게 수열 변환하기 3
+
+```python
+def solution(arr, k):
+    return [a*k if k%2 else a+k for a in arr]
+```
+
+
+
+> lambda 사용
+
+```python
+def solution(arr, k):
+    return list(map((lambda x:x*k) if k%2 else (lambda x:x+k), arr))
+```
+
 
 
 
