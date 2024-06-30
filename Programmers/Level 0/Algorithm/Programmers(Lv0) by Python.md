@@ -1385,6 +1385,15 @@ def solution(my_string, alp):
 
 
 
+### 홀짝 구분하기
+
+```python
+a = int(input())
+print(str(a) + " is odd") if a%2 else print(str(a) + " is even")
+```
+
+
+
 
 
 
